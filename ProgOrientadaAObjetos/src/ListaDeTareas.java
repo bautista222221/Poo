@@ -1,50 +1,51 @@
 import java.time.LocalDate;
-public class ListaDeTareas<T> {
-    public class Tarea{
-        private String descripcion;
-        private boolean estado;
-        private int prioridad;
-        private LocalDate fechaLimite;
-        Tarea(String descripcion,int prioridad,LocalDate fechaLimite){
-            this.descripcion=descripcion;
-            this.estado=false;
-            this.prioridad=prioridad;
-            this.fechaLimite=fechaLimite;
-        }
-        public void modificarDescripcion(String descripcion){
-            this.descripcion=descripcion;
-        }
-        public void modificarPrioridad(int prioridad){
-            this.prioridad=prioridad;
-        }
-        public void modificarFechaLimite(LocalDate fechaLimite){
-            this.fechaLimite=fechaLimite;
-        }
-        public void tachar(){
-            this.estado=true;
-        }
-        public String mostrarTarea(){
-            if(estado){
-                return"(Vencida...) "+descripcion;
-            }else{
-                return descripcion;
+import java.util.EmptyStackException;
+
+public class ListaDeTareas {
+    Lista<Tarea> lista=new Lista<>();
+    public void agregar(Tarea tarea){
+        if(lista.vacia()){
+            lista.agregar(tarea);
+        }else if(lista.recuperar(0).prioridad()<tarea.prioridad()) {
+            lista.insertar(0, tarea);
+        }else{
+            int contador=0;
+            Tarea buscador=lista.recuperar(contador);
+            while((buscador.prioridad()>tarea.prioridad())&&(contador<lista.tamano()-1)){
+                contador++;
+                buscador=lista.recuperar(contador);
             }
-        }
-        public boolean estaVencida(){
-            LocalDate fechaActual=LocalDate.now();
-            return !estado&&fechaActual.isAfter(fechaLimite);
-        }
-        public boolean estaCompleta(){
-            return estado;
+            lista.insertar(contador,tarea);
         }
     }
-    public void main(){
-        Tarea tarea1=new Tarea("Consultar repuesto del auto.",3,LocalDate.of(2023,8,20));
-        tarea1.tachar();
-        Tarea tarea2=new Tarea("Ir al supermercado mañana.",1,LocalDate.of(2023,8,22));
-        Tarea tarea3=new Tarea("Ir al cine a ver la nueva peli de Marvel.",1,LocalDate.of(2023,8,20));
-        System.out.printf("Tarea 1: %s\n",tarea1.mostrarTarea());
-        System.out.printf("Tarea 2: %s\n",tarea2.mostrarTarea());
-        System.out.printf("Tarea 3: %s\n",tarea3.mostrarTarea());
+    public void modificar(String descripcion, int prioridad, LocalDate fechaLimite, int posicionTarea){
+        if(posicionTarea<0||posicionTarea>lista.tamano()){
+            throw new IndexOutOfBoundsException("El indice no se encuentra en la lista!");
+        }
+        Tarea nueva=lista.recuperar(posicionTarea);
+        nueva.modificarDescripcion(descripcion);
+        nueva.modificarFechaLimite(fechaLimite);
+        int prioridadAnt=nueva.prioridad();
+        nueva.modificarPrioridad(prioridad);
+        lista.eliminar(posicionTarea);
+        if(prioridadAnt== nueva.prioridad()){
+            lista.insertar(posicionTarea,nueva);
+        }else{
+            agregar(nueva);
+        }
+    }
+    public void mostrarLista(){
+        if(lista.vacia()){
+            throw new EmptyStackException();
+        }
+        int contador=0;
+        Tarea actual;
+        while(contador<lista.tamano()-1){
+            actual= lista.recuperar(contador);
+            contador++;
+            System.out.printf("Tarea %d\n",contador);
+            actual.mostrarTarea();
+            System.out.print("\n\n");
+        }
     }
 }

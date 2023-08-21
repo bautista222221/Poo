@@ -72,8 +72,8 @@ public class Lista<T> {
             Nodo actual=cabeza;
             int contador=0;
             while(contador<indice){
-                actual=actual.siguiente;
                 contador++;
+                actual=actual.siguiente;
             }
             Nodo aux=actual.siguiente;
             actual.siguiente=new Nodo(elemento);
