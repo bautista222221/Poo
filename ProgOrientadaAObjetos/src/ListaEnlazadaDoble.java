@@ -9,13 +9,13 @@ public class ListaEnlazadaDoble<T>{
             this.anterior=null;
         }
     }
-    private int tamaño;
+    private int tamano;
     private Nodo cabeza;
     private Nodo cola;
     public ListaEnlazadaDoble(){
         cabeza=null;
         cola=null;
-        tamaño=0;
+        tamano=0;
     }
     public void agregar(T elemento){
         Nodo nuevoNodo=new Nodo(elemento);
@@ -27,10 +27,10 @@ public class ListaEnlazadaDoble<T>{
             cola.siguiente=nuevoNodo;
             cola=nuevoNodo;
         }
-        tamaño++;
+        tamano++;
     }
     public void eliminar(int indice){
-        if(indice<0||indice>=tamaño){
+        if(indice<0||indice>=tamano){
             throw new IndexOutOfBoundsException("Indice fuera de rango!");
         }
         Nodo actual=cabeza;
@@ -49,13 +49,13 @@ public class ListaEnlazadaDoble<T>{
         }else {
             cola=actual.anterior;
         }
-        tamaño--;
+        tamano--;
     }
-    public int tamaño(){
-        return tamaño;
+    public int tamano(){
+        return tamano;
     }
     public T recuperar(int indice){
-        if(indice<0||indice>=tamaño){
+        if(indice<0||indice>=tamano){
             throw new IndexOutOfBoundsException("Indice fuera de rango!");
         }
         Nodo actual=cabeza;
@@ -70,7 +70,7 @@ public class ListaEnlazadaDoble<T>{
         return cabeza==null;
     }
     public void insertar(int indice,T elemento){
-        if(indice<0||indice>=tamaño){
+        if(indice<0||indice>=tamano){
             throw new IndexOutOfBoundsException("Indice fuera de rango!");
         }
         if(indice==0){
@@ -83,7 +83,7 @@ public class ListaEnlazadaDoble<T>{
                 cola=aux;
             }
         }
-        if(indice==tamaño){
+        if(indice==tamano){
             agregar(elemento);
         }else {
             Nodo nodoAnterior = cabeza;
@@ -99,6 +99,6 @@ public class ListaEnlazadaDoble<T>{
             nodoAnterior.siguiente=nuevo;
             nodoSiguiente.anterior=nuevo;
         }
-        tamaño++;
+        tamano++;
     }
 }

@@ -2,7 +2,7 @@ import java.util.EmptyStackException;
 
 public class Pila<T> {
     private Nodo tope;
-    private int tamaño;
+    private int tamano;
     private class Nodo {
         T valor;
         Nodo siguiente;
@@ -12,19 +12,19 @@ public class Pila<T> {
     }
     public Pila(){
         tope=null;
-        tamaño=0;
+        tamano=0;
     }
     public boolean vacia(){
         return tope==null;
     }
     public int tamaño(){
-        return tamaño;
+        return tamano;
     }
     public void apilar(T elemento){
         Nodo nuevo=new Nodo(elemento);
         nuevo.siguiente=tope;
         tope=nuevo;
-        tamaño++;
+        tamano++;
     }
     public T desapilar(){
         if(tope==null){
@@ -32,7 +32,7 @@ public class Pila<T> {
         }
         T elemento=tope.valor;
         tope=tope.siguiente;
-        tamaño--;
+        tamano--;
         return elemento;
     }
     public T tope(){

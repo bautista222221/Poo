@@ -8,10 +8,10 @@ public class Lista<T> {
         }
     }
     private Nodo cabeza;
-    private int tamaño;
+    private int tamano;
     public Lista(){
         cabeza=null;
-        tamaño=0;
+        tamano=0;
     }
     public void agregar(T elemento){
         Nodo nuevoNodo=new Nodo(elemento);
@@ -25,13 +25,13 @@ public class Lista<T> {
             }
             actual.siguiente=nuevoNodo;
         }
-        tamaño++;
+        tamano++;
     }
-    public int tamaño(){
-        return tamaño;
+    public int tamano(){
+        return tamano;
     }
     public T recuperar(int indice){
-        if(indice<0||indice>=tamaño){
+        if(indice<0||indice>=tamano){
             throw new IndexOutOfBoundsException("El indice esta fuera de rango!");
         }
         int contador=0;
@@ -43,7 +43,7 @@ public class Lista<T> {
         return actual.valor;
     }
     public void eliminar(int indice){
-        if(indice<0||indice>=tamaño) {
+        if(indice<0||indice>=tamano) {
             throw new IndexOutOfBoundsException("El indice esta fuera de rango!");
         }
         if (indice == 0) {
@@ -56,17 +56,17 @@ public class Lista<T> {
             contador++;
         }
         actual.siguiente=actual.siguiente.siguiente;
-        tamaño--;
+        tamano--;
     }
     public boolean vacia(){
         return cabeza==null;
     }
 
     public void insertar(int indice,T elemento){
-        if(indice<0||indice>=tamaño) {
+        if(indice<0||indice>=tamano) {
             throw new IndexOutOfBoundsException("El indice esta fuera de rango!");
         }
-        if(indice==tamaño-1){
+        if(indice==tamano-1){
             agregar(elemento);
         }else{
             Nodo actual=cabeza;
@@ -80,6 +80,6 @@ public class Lista<T> {
             actual=actual.siguiente;
             actual.siguiente=aux;
         }
-        tamaño++;
+        tamano++;
     }
 }
