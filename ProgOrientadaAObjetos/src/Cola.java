@@ -1,5 +1,5 @@
 public class Cola <T>{
-    public class Nodo{
+    private class Nodo{
         T valor;
         Nodo siguiente;
         Nodo(T valor){

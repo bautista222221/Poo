@@ -1,40 +1,40 @@
 import java.time.LocalDate;
 public class ListaDeTareas<T> {
     public class Tarea{
-        String descripcion;
-        boolean estado;
-        int prioridad;
-        LocalDate fechaLimite;
+        private String descripcion;
+        private boolean estado;
+        private int prioridad;
+        private LocalDate fechaLimite;
         Tarea(String descripcion,int prioridad,LocalDate fechaLimite){
             this.descripcion=descripcion;
             this.estado=false;
             this.prioridad=prioridad;
             this.fechaLimite=fechaLimite;
         }
-        void modificarDescripcion(String descripcion){
+        public void modificarDescripcion(String descripcion){
             this.descripcion=descripcion;
         }
-        void modificarPrioridad(int prioridad){
+        public void modificarPrioridad(int prioridad){
             this.prioridad=prioridad;
         }
-        void modificarFechaLimite(LocalDate fechaLimite){
+        public void modificarFechaLimite(LocalDate fechaLimite){
             this.fechaLimite=fechaLimite;
         }
-        void tachar(){
+        public void tachar(){
             this.estado=true;
         }
-        String mostrarTarea(){
+        public String mostrarTarea(){
             if(estado){
                 return"(Vencida...) "+descripcion;
             }else{
                 return descripcion;
             }
         }
-        boolean estaVencida(){
+        public boolean estaVencida(){
             LocalDate fechaActual=LocalDate.now();
             return !estado&&fechaActual.isAfter(fechaLimite);
         }
-        boolean estaCompleta(){
+        public boolean estaCompleta(){
             return estado;
         }
     }
