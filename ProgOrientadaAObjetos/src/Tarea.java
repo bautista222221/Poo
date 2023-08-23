@@ -26,7 +26,7 @@ public class Tarea{
         if(fechaLimite.isBefore(LocalDate.now())&&!estado) {
             descripcion="(Vencida)..."+descripcion;
         }
-        if(estado&&!(fechaLimite.isBefore(LocalDate.now()))){
+        if(estado){
             for (char c:descripcion.toCharArray()) {
                 System.out.print(c+"̶");
             }

@@ -62,23 +62,28 @@ public class Lista<T> {
         return cabeza==null;
     }
 
-    public void insertar(int indice,T elemento){
-        if(indice<0||indice>=tamano) {
+    public void insertar(int indice,T elemento) {
+        if (indice < 0 || indice >= tamano) {
             throw new IndexOutOfBoundsException("El indice esta fuera de rango!");
         }
-        if(indice==tamano-1){
+        if (indice == tamano - 1) {
             agregar(elemento);
-        }else{
-            Nodo actual=cabeza;
-            int contador=0;
-            while(contador<indice){
+            return;
+        } else if (indice == 0) {
+            Nodo nuevo = new Nodo(elemento);
+            nuevo.siguiente = cabeza;
+            cabeza = nuevo;
+        } else {
+            Nodo actual = cabeza;
+            int contador = 0;
+            while (contador < indice) {
                 contador++;
-                actual=actual.siguiente;
+                actual = actual.siguiente;
             }
-            Nodo aux=actual.siguiente;
-            actual.siguiente=new Nodo(elemento);
-            actual=actual.siguiente;
-            actual.siguiente=aux;
+            Nodo aux = actual.siguiente;
+            actual.siguiente = new Nodo(elemento);
+            actual = actual.siguiente;
+            actual.siguiente = aux;
         }
         tamano++;
     }
