@@ -20,7 +20,7 @@ public class Lista<T> {
         }
         else{
             Nodo actual=cabeza;
-            while(cabeza.siguiente!=null){
+            while(actual.siguiente!=null){
                 actual=actual.siguiente;
             }
             actual.siguiente=nuevoNodo;
