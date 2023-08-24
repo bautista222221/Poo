@@ -1,9 +1,19 @@
-import java.sql.SQLOutput;
 import java.time.LocalDate;
-
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        /*Tarea tarea1 = new Tarea("Consultar repuesto del auto", 2, LocalDate.of(2023, 8, 29));
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca.");
+        int numero=sc.nextInt();
+        switch (numero) {
+            case 1 -> getListaDeTareas();
+            case 2 -> getBiblioteca();
+            default -> System.out.println("Ingrese un valor valido!");
+        }
+    }
+
+    private static void getListaDeTareas() {
+        Tarea tarea1 = new Tarea("Consultar repuesto del auto", 2, LocalDate.of(2023, 8, 29));
         tarea1.tachar();
         Tarea tarea2 = new Tarea("Ir al supermercado mañana", 4, LocalDate.of(2023, 8, 22));
         Tarea tarea3 = new Tarea("Ir al cine a ver la nueva peli de Marvel", 2, LocalDate.of(2023, 8, 20));
@@ -13,42 +23,30 @@ public class Main {
         listaDeTareas.agregar(tarea2);
         listaDeTareas.agregar(tarea3);
         listaDeTareas.agregar(tarea4);
-        listaDeTareas.mostrarLista();*/
+        listaDeTareas.modificar("Ir al supermercado pasado-mañana",3,LocalDate.of(2023,8,29),1);
+        listaDeTareas.mostrarLista();
+    }
 
-        Biblioteca maincra = new Biblioteca("Maincra");
+    private static void getBiblioteca() {
+        Biblioteca biblioteca = new Biblioteca("Biblioteca");
+        System.out.println("Biblioteca "+biblioteca.nombreBiblioteca()+" dada de alta.");
         Libro libro1 = new Libro("Diario de Ana Frank", "Ana Frank", 215);
-        maincra.nuevoLibro(libro1);
-        maincra.agregarEjemplares(libro1, 6);
-        maincra.prestar(libro1);
-        Libro libro2 = new Libro("El mundo de Vegetta 777", "Vegetta777", 130);
-        maincra.nuevoLibro(libro2);
-        Libro libro3 = new Libro("Las aventuras de Franketa y su 110", "TT", 25);
-        maincra.nuevoLibro(libro3);
-        maincra.agregarEjemplares(libro3,1258);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3);
-        maincra.prestar(libro3); // 14
-        maincra.mostarDatos(libro3);
-        maincra.agregarEjemplares(libro2, 15);
-        maincra.prestar(libro2);
-        maincra.prestar(libro2);
-        maincra.prestar(libro2);
-        maincra.mostarDatos(libro1);
-        maincra.mostarDatos(libro2);
-        maincra.masHojas(libro1, libro3);
-        maincra.prestadosEjemplar(libro3);
-        maincra.prestadosTotales();
+        Libro libro2 = new Libro("Harry Potter y las reliquias de la muerte", "J. K. Rowling", 630);
+        Libro libro3 = new Libro("Cancion de Hielo y Fuego, Juego de Tronos", "George R. R. Martin", 1300);
+        biblioteca.nuevoLibro(libro1);
+        biblioteca.nuevoLibro(libro2);
+        biblioteca.nuevoLibro(libro3);
+        biblioteca.agregarEjemplares(libro1,9);
+        biblioteca.agregarEjemplares(libro2,19);
+        biblioteca.agregarEjemplares(libro3,29);
+        biblioteca.prestar(libro1,8);
+        biblioteca.prestar(libro2,19);
+        biblioteca.prestar(libro3,40);
+        biblioteca.mostarDatos(libro1);
+        biblioteca.mostarDatos(libro2);
+        biblioteca.mostarDatos(libro3);
+        biblioteca.masHojas(libro1,libro2);
+        biblioteca.prestadosTotales();
     }
 
 }

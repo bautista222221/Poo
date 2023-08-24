@@ -34,10 +34,10 @@ public class Lista<T> {
         if(indice<0||indice>=tamano){
             throw new IndexOutOfBoundsException("El indice esta fuera de rango!");
         }
-        int contador=0;
-        Nodo actual=cabeza;
-        while(contador<indice){
-            actual=actual.siguiente;
+        int contador = 0;
+        Nodo actual = cabeza;
+        while (contador < indice) {
+            actual = actual.siguiente;
             contador++;
         }
         return actual.valor;
@@ -66,10 +66,7 @@ public class Lista<T> {
         if (indice < 0 || indice >= tamano) {
             throw new IndexOutOfBoundsException("El indice esta fuera de rango!");
         }
-        if (indice == tamano - 1) {
-            agregar(elemento);
-            return;
-        } else if (indice == 0) {
+        if (indice == 0) {
             Nodo nuevo = new Nodo(elemento);
             nuevo.siguiente = cabeza;
             cabeza = nuevo;

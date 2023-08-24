@@ -6,8 +6,6 @@ public class ListaDeTareas {
     public void agregar(Tarea tarea){
         if(lista.vacia()){
             lista.agregar(tarea);
-        }else if(lista.recuperar(0).prioridad()<tarea.prioridad()) {
-            lista.insertar(0, tarea);
         }else{
             int contador=0;
             Tarea buscador=lista.recuperar(contador);
@@ -40,8 +38,8 @@ public class ListaDeTareas {
         }
         int contador=0;
         Tarea actual;
-        while(contador<lista.tamano()-1){
-            actual= lista.recuperar(contador);
+        while(contador<lista.tamano()){
+            actual=lista.recuperar(contador);
             contador++;
             System.out.printf("Tarea %d\n",contador);
             actual.mostrarTarea();

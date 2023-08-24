@@ -1,8 +1,8 @@
 public class Libro {
 
-    private String titulo;
-    private String autor;
-    private int cantHojas;
+    private final String titulo;
+    private final String autor;
+    private final int cantHojas;
     private int cantEjemplares;
 
     private int cantTotales;
