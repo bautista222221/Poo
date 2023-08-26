@@ -3,11 +3,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca.");
+        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. ");
         int numero=sc.nextInt();
         switch (numero) {
             case 1 -> getListaDeTareas();
             case 2 -> getBiblioteca();
+            case 3 -> getEcuaciondeSegundoGrado();
             default -> System.out.println("Ingrese un valor valido!");
         }
     }
@@ -47,6 +48,21 @@ public class Main {
         biblioteca.mostarDatos(libro3);
         biblioteca.masHojas(libro1,libro2);
         biblioteca.prestadosTotales();
+    }
+
+    private static void getEcuaciondeSegundoGrado(){
+        EcuacionDeSegundoGrado ecuacion=new EcuacionDeSegundoGrado(1,-3,2);
+        ecuacion.mostrarRaices();
+        ecuacion.calcularValorDeY(5);
+        EcuacionDeSegundoGrado ecuacion2=new EcuacionDeSegundoGrado(5,8,2);
+        ecuacion2.mostrarRaices();
+        ecuacion2.calcularValorDeY(2);
+        EcuacionDeSegundoGrado ecuaucion3=new EcuacionDeSegundoGrado(2,-4,2);
+        ecuaucion3.mostrarRaices();
+        ecuaucion3.calcularValorDeY(6);
+        EcuacionDeSegundoGrado ecuacion4=new EcuacionDeSegundoGrado(1,4,5);
+        ecuacion4.mostrarRaices();
+        ecuacion4.calcularValorDeY(-3);
     }
 
 }
