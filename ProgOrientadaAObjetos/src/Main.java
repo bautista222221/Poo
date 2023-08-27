@@ -3,12 +3,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. ");
+        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password.");
         int numero=sc.nextInt();
         switch (numero) {
             case 1 -> getListaDeTareas();
             case 2 -> getBiblioteca();
             case 3 -> getEcuaciondeSegundoGrado();
+            case 4 -> getPassword();
             default -> System.out.println("Ingrese un valor valido!");
         }
     }
@@ -63,6 +64,13 @@ public class Main {
         EcuacionDeSegundoGrado ecuacion4=new EcuacionDeSegundoGrado(1,4,5);
         ecuacion4.mostrarRaices();
         ecuacion4.calcularValorDeY(-3);
+    }
+
+    private static void getPassword(){
+        Password pass=new Password(10);
+        pass.generarPassword();
+        pass.esSegura();
+        String contrasena=pass.getPassword();
     }
 
 }
