@@ -67,10 +67,11 @@ public class Main {
     }
 
     private static void getPassword(){
-        Password pass=new Password(10);
+        /*Password pass=new Password(10);
         pass.generarPassword();
         pass.esSegura();
-        String contrasena=pass.getPassword();
+        String contrasena=pass.getPassword();*/
+        ColeccionDeContraseñas lista=new ColeccionDeContraseñas(10);
+        lista.mostrarColeccion();
     }
-
 }

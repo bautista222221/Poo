@@ -4,14 +4,18 @@ import java.util.Scanner;
 public class Password {
     private String password;
     private int longitud;
+
+    private boolean segura;
     public Password(int longitud){
         this.longitud=longitud;
+        generarPassword();
     }
 
     public Password(){
         this(8);
+        generarPassword();
     }
-    public void generarPassword(){
+    private void generarPassword(){
         String aleatorio="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         StringBuilder constructor=new StringBuilder();
         Random random=new Random();
@@ -20,6 +24,7 @@ public class Password {
             constructor.append(rand);
         }
         password=constructor.toString();
+        esSegura();
     }
 
     public String getPassword(){
@@ -30,41 +35,50 @@ public class Password {
         return longitud;
     }
 
+    public boolean getSegura(){
+        return segura;
+    }
+
     public void regenerarPassword(){
         generarPassword();
     }
 
-    public boolean esSegura(){
-        int mayusculas=0;
-        int minusculas=0;
-        int numeros=0;
-        for (char c:password.toCharArray()) {
-            if(Character.isUpperCase(c)){
+    private void esSegura(){
+        int mayusculas = 0;
+        int minusculas = 0;
+        int numeros = 0;
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
                 mayusculas++;
-            }
-            else if(Character.isLowerCase(c)){
+            } else if (Character.isLowerCase(c)) {
                 minusculas++;
-            }
-            else if(Character.isDigit(c)){
+            } else if (Character.isDigit(c)) {
                 numeros++;
             }
         }
-        if((mayusculas>2)&&(minusculas>1)&&(numeros>1)){
-            System.out.println("La contraseña: "+password+" es segura");
-        }
-        else{
-            Scanner sc=new Scanner(System.in);
-            int reintentar=1;
-            System.out.println("La contraseña: "+password+" NO es segura");
-            System.out.println("Quiere generar una nueva? (1-Si 2-No)");
-            reintentar=sc.nextInt();
-            if (reintentar==1){
-                generarPassword();
-                esSegura();
-            }
-            return reintentar!=2;
-        }
-        return true;
+        this.segura= (mayusculas > 2) && (minusculas > 1) && (numeros > 1);
     }
+
+    public boolean regenerar() {
+        Scanner sc = new Scanner(System.in);
+        int reintentar;
+        do {
+            if (segura) {
+                System.out.println("La contraseña: " + password + " es segura");
+                return true;
+            } else {
+                System.out.println("La contraseña: " + password + " NO es segura");
+                System.out.println("Quiere generar una nueva? (1-Si 2-No)");
+                reintentar = sc.nextInt();
+                if (reintentar == 1) {
+                    generarPassword();
+                }
+            }
+        } while (reintentar == 1);
+
+        return false;
+    }
+
 
 }
