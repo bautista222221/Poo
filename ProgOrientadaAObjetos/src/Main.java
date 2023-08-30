@@ -30,25 +30,18 @@ public class Main {
     }
 
     private static void getBiblioteca() {
-        Biblioteca biblioteca = new Biblioteca("Biblioteca");
-        System.out.println("Biblioteca "+biblioteca.nombreBiblioteca()+" dada de alta.");
-        Libro libro1 = new Libro("Diario de Ana Frank", "Ana Frank", 215);
-        Libro libro2 = new Libro("Harry Potter y las reliquias de la muerte", "J. K. Rowling", 630);
-        Libro libro3 = new Libro("Cancion de Hielo y Fuego, Juego de Tronos", "George R. R. Martin", 1300);
-        biblioteca.nuevoLibro(libro1);
-        biblioteca.nuevoLibro(libro2);
-        biblioteca.nuevoLibro(libro3);
-        biblioteca.agregarEjemplares(libro1,9);
-        biblioteca.agregarEjemplares(libro2,19);
-        biblioteca.agregarEjemplares(libro3,29);
-        biblioteca.prestar(libro1,8);
-        biblioteca.prestar(libro2,19);
-        biblioteca.prestar(libro3,40);
-        biblioteca.mostarDatos(libro1);
-        biblioteca.mostarDatos(libro2);
-        biblioteca.mostarDatos(libro3);
-        biblioteca.masHojas(libro1,libro2);
-        biblioteca.prestadosTotales();
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.nuevoLibro("Harry Potter", "J.K.Rowling", 560, "51654135415");
+        biblioteca.nuevoLibro("El principito", "Juan Perez", 600, "51837461382");
+        biblioteca.agregarEjemplares("Harry Potter", 9);
+        biblioteca.prestar("Harry Potter");
+        biblioteca.prestar("El principito");
+        biblioteca.masHojas("Harry Potter", "El principito");
+        System.out.println(biblioteca.mostrarDescripcion("Harry Potter"));
+        System.out.println(biblioteca.mostrarDescripcion("El principito"));
+        biblioteca.devolver("Harry Potter", "J.K.Rowling", 560, "51654135415");
+        biblioteca.devolver("Harry Potter", "J.K.Rowling", 560, "51654135415");
+        System.out.println("Los ejemplares totales prestados son: " + biblioteca.getCantPrestadosTotales());
     }
 
     private static void getEcuaciondeSegundoGrado(){

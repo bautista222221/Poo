@@ -1,56 +1,117 @@
+import java.security.IdentityScope;
+
 public class Biblioteca {
-    private final String nombre;
     private final Lista <Libro> lista;
-    public Biblioteca (String nombre){
-        this.nombre = nombre;
+    public Biblioteca (){
         this.lista = new Lista<>();
     }
-    public void nuevoLibro (Libro libro1){
+    public void nuevoLibro (String titulo, String autor, int cantHojas, String isbn){
+        Libro libro1 = new Libro (titulo, autor, cantHojas, isbn);
         lista.agregar(libro1);
     }
-    public void agregarEjemplares(Libro libro1, int cantidad){
-        for (int i=0; i<cantidad; i++){
-            libro1.aumentarCantidad();
+    public void agregarEjemplares(String titulo, int cantidad){
+        Libro libro1;
+        int longitud = lista.tamano();
+        for (int j=0; j<longitud; j++){
+            libro1 = lista.recuperar(j);
+            if (libro1.getTitulo().equals(titulo)){
+                for (int i=0; i<cantidad; i++){
+                    libro1.aumentarCantidad();
+                }
+            }
+
         }
     }
-    public void masHojas (Libro libro1, Libro libro2){
-        if (libro1.cantidadHojas() > libro2.cantidadHojas()){
-            System.out.println("Tiene más hojas: " + libro1.mostrarTitulo());
+    public void masHojas (String titulo1, String titulo2){
+        Libro libro1 = null;
+        boolean encontrado1 = false;
+        boolean encontrado2 = false;
+        int longitud = lista.tamano();
+        for (int j=0; j<longitud; j++) {
+            libro1 = lista.recuperar(j);
+            if (libro1.getTitulo().equals(titulo1)) {
+                encontrado1 = true;
+                break;
+            }
+        }
+        Libro libro2 = null;
+        for (int j=0; j<longitud; j++) {
+            libro2 = lista.recuperar(j);
+            if (libro2.getTitulo().equals(titulo2)) {
+                encontrado2 = true;
+                break;
+            }
+        }
+        if (encontrado1 && encontrado2){
+            if (libro1.getCantidadHojas() > libro2.getCantidadHojas()){
+                System.out.println("Tiene más hojas: " + libro1.getTitulo());
+            }
+            else {
+                System.out.println("Tienes más hojas: " + libro2.getTitulo());
+            }
         }
         else {
-            System.out.println("Tienes más hojas: " + libro2.mostrarTitulo());
+            System.out.println("No se encontraron los libros");
         }
     }
-    public void prestar (Libro libro1,int cantidad) {
-        int contador = 0;
-        while (libro1.prestarLibro() && contador < cantidad-1) {
-            contador++;
+    public boolean prestar (String titulo) {
+        Libro libro1 = null;
+        int longitud = lista.tamano();
+        for (int j=0; j<longitud; j++) {
+            libro1 = lista.recuperar(j);
+            if (libro1.getTitulo().equals(titulo)){
+                if (libro1.prestarLibro()){
+                    return true;
+                }
+            }
         }
-        if (contador < cantidad - 1) {
-            System.out.println("Solo se han podido dar " + contador + " libros!");
-        } else {
-            System.out.println("Se han dado exitosamente los " + cantidad + " libros!");
-        }
-    }
-    private int librosPrestados (Libro libro1){
-        return libro1.cantTotales() - libro1.cantEjemplares();
+        return false;
     }
 
-    public void mostarDatos (Libro libro1){
-        System.out.println("El libro: " + libro1.mostrarTitulo() + " creado por el autor: " + libro1.mostrarAutor() + " tiene: " + libro1.cantidadHojas() + " hojas y quedan: " + libro1.cantEjemplares() + " disponibles y se prestaron: " + librosPrestados(libro1));
-    }
-    public void prestadosTotales(){
-        int prestados = 0;
-        int contador = 0;
-        Libro actual;
-        while (contador < lista.tamano()){
-            actual = lista.recuperar(contador);
-            contador++;
-            prestados += librosPrestados(actual);
+    public boolean devolver (String titulo, String autor, int cantHojas, String isbn){
+        Libro libro1 = null;
+        int longitud = lista.tamano();
+        for (int j=0; j<longitud; j++) {
+            libro1 = lista.recuperar(j);
+            if (libro1.getTitulo().equals(titulo)){
+                if (libro1.getAutor().equals(autor)){
+                    if (libro1.getCantidadHojas()==cantHojas){
+                        if (libro1.getIsbn().equals(isbn)){
+                            if (libro1.devolverLibro()){
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
         }
-        System.out.println("Cantidad total de ejemplares prestados: " + prestados);
+        return false;
     }
-    public String nombreBiblioteca(){
-        return nombre;
+    public int getCantPrestadosTotales () {
+        int longitud = lista.tamano();
+        Libro libro1;
+        int prestados = 0;
+        for (int i=0; i<longitud; i++){
+            libro1 = lista.recuperar(i);
+            prestados += libro1.cantidadPrestados();
+        }
+        return Math.max(prestados, 0);
+    }
+
+    public String mostrarDescripcion (String titulo){
+        Libro libro1 = null;
+        String descripcion = null;
+        int longitud = lista.tamano();
+        for (int j=0; j<longitud; j++) {
+            libro1 = lista.recuperar(j);
+            if (libro1.getTitulo().equals(titulo)){
+                descripcion = libro1.mostarDatos();
+            }
+        }
+        if (descripcion == null){
+            System.out.println("No se encontro el libro");
+            return "No";
+        }
+        return descripcion;
     }
 }
