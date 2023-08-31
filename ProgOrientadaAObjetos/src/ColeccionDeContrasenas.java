@@ -1,8 +1,6 @@
-public class ColeccionDeContraseñas {
-    private int longitud;
-    private Lista<Password> lista;
-    public ColeccionDeContraseñas(int longitud){
-        this.longitud=longitud;
+public class ColeccionDeContrasenas {
+    private final Lista<Password> lista;
+    public ColeccionDeContrasenas(int longitud){
         this.lista=new Lista<Password>();
         for(int i=0;i<10;i++){
             Password pass=new Password(longitud);
@@ -17,8 +15,8 @@ public class ColeccionDeContraseñas {
             Password pass=lista.recuperar(i);
             System.out.printf("La contraseña N° %d es: %s",i+1,pass.getPassword());
             if(pass.getSegura()){
-                System.out.printf(" Es segura.\n");
-            }else System.out.printf(" No es segura.\n");
+                System.out.print(" Es segura.\n");
+            }else System.out.print(" No es segura.\n");
         }
     }
 }

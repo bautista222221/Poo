@@ -1,16 +1,13 @@
 import java.util.Random;
 import java.util.Scanner;
-
 public class Password {
     private String password;
-    private int longitud;
-
+    private final int longitud;
     private boolean segura;
     public Password(int longitud){
         this.longitud=longitud;
         generarPassword();
     }
-
     public Password(){
         this(8);
         generarPassword();
@@ -26,28 +23,10 @@ public class Password {
         password=constructor.toString();
         esSegura();
     }
-
-    public String getPassword(){
-        return password;
-    }
-
-    public int getLongitud(){
-        return longitud;
-    }
-
-    public boolean getSegura(){
-        return segura;
-    }
-
-    public void regenerarPassword(){
-        generarPassword();
-    }
-
     private void esSegura(){
         int mayusculas = 0;
         int minusculas = 0;
         int numeros = 0;
-
         for (char c : password.toCharArray()) {
             if (Character.isUpperCase(c)) {
                 mayusculas++;
@@ -59,7 +38,18 @@ public class Password {
         }
         this.segura= (mayusculas > 2) && (minusculas > 1) && (numeros > 1);
     }
-
+    public String getPassword(){
+        return password;
+    }
+    public int getLongitud(){
+        return longitud;
+    }
+    public boolean getSegura(){
+        return segura;
+    }
+    public void regenerarPassword(){
+        generarPassword();
+    }
     public boolean regenerar() {
         Scanner sc = new Scanner(System.in);
         int reintentar;
@@ -76,9 +66,6 @@ public class Password {
                 }
             }
         } while (reintentar == 1);
-
         return false;
     }
-
-
 }

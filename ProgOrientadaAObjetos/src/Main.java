@@ -3,13 +3,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password.");
+        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password. \n5-Fecha. ");
         int numero=sc.nextInt();
         switch (numero) {
             case 1 -> getListaDeTareas();
             case 2 -> getBiblioteca();
             case 3 -> getEcuaciondeSegundoGrado();
             case 4 -> getPassword();
+            case 5 -> getFecha();
             default -> System.out.println("Ingrese un valor valido!");
         }
     }
@@ -64,7 +65,21 @@ public class Main {
         pass.generarPassword();
         pass.esSegura();
         String contrasena=pass.getPassword();*/
-        ColeccionDeContraseñas lista=new ColeccionDeContraseñas(10);
+        ColeccionDeContrasenas lista=new ColeccionDeContrasenas(10);
         lista.mostrarColeccion();
+    }
+
+    private static void getFecha(){
+        Fecha fecha=new Fecha("22-03-2004");
+        Fecha fecha2=new Fecha("08-25-2021",true);
+        LocalDate fecha3=LocalDate.of(2022,9,21);
+        LocalDate fecha4=LocalDate.of(2000,6,15);
+        LocalDate prueba1=fecha.getFecha();
+        LocalDate prueba2=fecha2.getFecha();
+        System.out.println("La primer fecha es: "+prueba1);
+        System.out.println("La segunda fecha es: "+prueba2);
+        System.out.println("La primer fecha esta entre las otras dos? "+fecha.entreMedio(fecha4,fecha3));
+        System.out.println("La fecha es anterior? "+fecha2.fechaAnterior(fecha3));
+        System.out.println("La fecha es posterior? "+fecha.fechaPosterior(fecha4));
     }
 }
