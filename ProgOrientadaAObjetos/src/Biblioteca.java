@@ -73,16 +73,8 @@ public class Biblioteca {
         int longitud = lista.tamano();
         for (int j=0; j<longitud; j++) {
             libro1 = lista.recuperar(j);
-            if (libro1.getTitulo().equals(titulo)){
-                if (libro1.getAutor().equals(autor)){
-                    if (libro1.getCantidadHojas()==cantHojas){
-                        if (libro1.getIsbn().equals(isbn)){
-                            if (libro1.devolverLibro()){
-                                return true;
-                            }
-                        }
-                    }
-                }
+            if((libro1.getTitulo().equals(titulo))&&(libro1.getAutor().equals(autor))&&(libro1.getCantidadHojas()==cantHojas)&&libro1.getIsbn().equals(isbn)){
+                return libro1.devolverLibro();
             }
         }
         return false;

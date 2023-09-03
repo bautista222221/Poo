@@ -35,8 +35,11 @@ public class Libro {
         }
     }
     public boolean devolverLibro(){
-        cantEjemplares++;
-        return true;
+        if(cantEjemplares<cantTotales) {
+            cantEjemplares++;
+            return true;
+        }
+        else return false;
     }
 
     public String getTitulo (){

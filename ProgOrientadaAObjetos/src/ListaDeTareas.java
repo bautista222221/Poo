@@ -9,14 +9,14 @@ public class ListaDeTareas {
         }else{
             int contador=0;
             Tarea buscador=lista.recuperar(contador);
-            while((buscador.prioridad()>tarea.prioridad())&&(contador<lista.tamano()-1)){
+            while((buscador.prioridad()<tarea.prioridad())&&(contador<lista.tamano()-1)){
                 contador++;
                 buscador=lista.recuperar(contador);
             }
             lista.insertar(contador,tarea);
         }
     }
-    public void modificar(String descripcion, int prioridad, LocalDate fechaLimite, int posicionTarea){
+    public void modificar(String descripcion, int prioridad, LocalDate fechaLimite,LocalDate recordatorio, int posicionTarea){
         if(posicionTarea<0||posicionTarea>lista.tamano()){
             throw new IndexOutOfBoundsException("El indice no se encuentra en la lista!");
         }
@@ -25,8 +25,9 @@ public class ListaDeTareas {
         nueva.modificarFechaLimite(fechaLimite);
         int prioridadAnt=nueva.prioridad();
         nueva.modificarPrioridad(prioridad);
+        nueva.modificarRecordatorio(recordatorio);
         lista.eliminar(posicionTarea);
-        if(prioridadAnt== nueva.prioridad()){
+        if(prioridadAnt==nueva.prioridad()){
             lista.insertar(posicionTarea,nueva);
         }else{
             agregar(nueva);

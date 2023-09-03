@@ -4,11 +4,13 @@ public class Tarea{
     private boolean estado;
     private int prioridad;
     private LocalDate fechaLimite;
-    Tarea(String descripcion,int prioridad,LocalDate fechaLimite){
+    private LocalDate recordatorio;
+    Tarea(String descripcion,int prioridad,LocalDate fechaLimite,LocalDate fechaRecordatorio){
         this.descripcion=descripcion;
         this.estado=false;
         this.prioridad=prioridad;
         this.fechaLimite=fechaLimite;
+        this.recordatorio=fechaRecordatorio;
     }
     public void modificarDescripcion(String descripcion){
         this.descripcion=descripcion;
@@ -18,6 +20,9 @@ public class Tarea{
     }
     public void modificarFechaLimite(LocalDate fechaLimite){
         this.fechaLimite=fechaLimite;
+    }
+    public void modificarRecordatorio(LocalDate recordatorio){
+        this.recordatorio=recordatorio;
     }
     public void tachar(){
         this.estado=true;
@@ -32,6 +37,10 @@ public class Tarea{
             }
             System.out.print("\n");
         }else{
+            if(recordatorio.isBefore(LocalDate.now())){
+                descripcion="(Por vencer)..."+descripcion;
+                prioridad=1;
+            }
             System.out.println(descripcion);
         }
         System.out.printf("Prioridad: %d\n",prioridad);
@@ -45,5 +54,8 @@ public class Tarea{
     }
     public boolean estaCompleta(){
         return estado;
+    }
+    public String getDescripcion(){
+        return descripcion;
     }
 }
