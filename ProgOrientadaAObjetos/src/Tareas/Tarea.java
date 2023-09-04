@@ -1,5 +1,5 @@
 package Tareas;
-
+import TADS.Lista;
 import java.time.LocalDate;
 public class Tarea{
     private String descripcion;
@@ -7,34 +7,45 @@ public class Tarea{
     private int prioridad;
     private LocalDate fechaLimite;
     private LocalDate recordatorio;
+    private Lista <String> colaboradores;
     public Tarea(String descripcion, int prioridad, LocalDate fechaLimite, LocalDate fechaRecordatorio){
         this.descripcion=descripcion;
         this.estado=false;
         this.prioridad=prioridad;
         this.fechaLimite=fechaLimite;
         this.recordatorio=fechaRecordatorio;
-        actualizar();
+        colaboradores = new Lista ();
+    }
+    public void agregarColab (String colaborador){
+        colaboradores.agregar(colaborador);
     }
     public void modificarDescripcion(String descripcion){
         this.descripcion=descripcion;
     }
     public void modificarPrioridad(int prioridad){
         this.prioridad=prioridad;
-        actualizar();
     }
     public void modificarFechaLimite(LocalDate fechaLimite){
         this.fechaLimite=fechaLimite;
-        actualizar();
     }
     public void modificarRecordatorio(LocalDate recordatorio){
         this.recordatorio=recordatorio;
-        actualizar();
     }
-    public void tachar(){
-        this.estado=true;
-        actualizar();
+    public void tachar(String colaborador){
+        if (estado){
+            System.out.println("La tarea ya fue realizada!!!");
+            return;
+        }
+        for (int i=0; i< colaboradores.tamano(); i++){
+            if (colaboradores.recuperar(i).equals(colaborador)){
+                this.estado=true;
+                this.fechaLimite=LocalDate.now();
+            }
+        }
+        System.out.println("El colaborador no es parte de esta tarea!!!");
     }
     public void mostrarTarea(){
+        actualizar();
         System.out.println("Descricion: "+descripcion);
         System.out.printf("Prioridad: "+prioridad+"\n");
         System.out.println("Vencimiento: "+fechaLimite+"\n");
@@ -50,6 +61,7 @@ public class Tarea{
                 sb.append("̶");
             }
             descripcion=sb.toString();
+            descripcion+= "Realizada el: " + fechaLimite;
             descripcion+="\n";
         }else{
             if(recordatorio.isBefore(LocalDate.now())&&(!descripcion.contains("(Por vencer)..."))){
@@ -73,5 +85,11 @@ public class Tarea{
     }
     public LocalDate getFechaLimite(){
         return fechaLimite;
+    }
+    public void mostrarColab (){
+        System.out.println("Colaboradores: ");
+        for(int i=0;i< colaboradores.tamano();i++){
+            System.out.println(colaboradores.recuperar(i)+ "\n");
+        }
     }
 }

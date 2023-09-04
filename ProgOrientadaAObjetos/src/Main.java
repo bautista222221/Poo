@@ -28,14 +28,19 @@ public class Main {
 
     private static void getListaDeTareas() {
         ListaDeTareas listaDeTareas = new ListaDeTareas();
-        listaDeTareas.agregarTarea("Consultar repuesto del auto.", 5, LocalDate.of(2023, 8,23),LocalDate.of(2023,8,17));
+        listaDeTareas.agregarTarea("Consultar repuesto del auto.", 5, LocalDate.of(2023, 9,23),LocalDate.of(2023,9,17));
+        listaDeTareas.agregarColaborador("Ir al supermercado mañana.", "Juan Pedro Lopez");
+        listaDeTareas.agregarColaborador("Ir al supermercado mañana.", "Armando Paredes");
+        listaDeTareas.agregarColaborador("Consultar repuesto del auto.", "Esteban Quito");
         listaDeTareas.agregarTarea("Ir al supermercado mañana.", 4, LocalDate.of(2023, 9,4),LocalDate.of(2023,9,3));
         listaDeTareas.agregarTarea("Ir al cine a ver la nueva peli de Marvel.", 2, LocalDate.of(2023, 9, 20),LocalDate.of(2023,9,8));
         listaDeTareas.agregarTarea("Terminar el tp de Base de Datos 1.", 1, LocalDate.of(2023, 9, 8),LocalDate.of(2023,9,2));
         listaDeTareas.agregarTarea("Tender la ropa.",2,LocalDate.of(2023,9,4),LocalDate.of(2023,9,4));
         listaDeTareas.agregarTarea("Estudiar para Jorge.",2,LocalDate.of(2023,9,10),LocalDate.of(2023,9,8));
-        listaDeTareas.tacharTarea("Consultar repuesto del auto.");
+        listaDeTareas.tacharTarea("Consultar repuesto del auto.", "Esteban Quito");
         listaDeTareas.modificar("Ir al supermercado pasado-mañana.",3,LocalDate.of(2023,9,5),LocalDate.of(2023,9,4),3);
+        listaDeTareas.mostrarColaboradores("Consultar repuesto del auto.");
+        listaDeTareas.mostrarColaboradores("Ir al supermercado mañana.");
         System.out.println("\n\n\n\n");
         listaDeTareas.listaDeTareasNoVencidas().mostrarLista();
         System.out.println("\n\n\n\n");

@@ -8,6 +8,13 @@ public class ListaDeTareas {
         Tarea tarea = new Tarea(descripcion, prioridad, fechaLimite, recordatorio);
         agregarEnLista(tarea);
     }
+    public void agregarColaborador (String descripcion, String colaborador){
+        for(int i=0;i< lista.tamano();i++){
+            if(lista.recuperar(i).getDescripcion().equals(descripcion)){
+                lista.recuperar(i).agregarColab(colaborador);
+            }
+        }
+    }
     private void agregarEnLista(Tarea tarea){
         if(lista.vacia()){
             lista.agregar(tarea);
@@ -38,13 +45,14 @@ public class ListaDeTareas {
             agregarEnLista(nueva);
         }
     }
-    public void tacharTarea(String desripcion){
+    public void tacharTarea(String descripcion, String colaborador){
         for(int i=0;i< lista.tamano();i++){
-            if(lista.recuperar(i).getDescripcion().equals(desripcion)){
-                lista.recuperar(i).tachar();
+            if(lista.recuperar(i).getDescripcion().equals(descripcion)){
+                lista.recuperar(i).tachar(colaborador);
             }
         }
     }
+
     public void mostrarLista(){
         if(lista.vacia()){
             throw new EmptyStackException();
@@ -58,6 +66,13 @@ public class ListaDeTareas {
             System.out.printf("Tarea "+contador+"\n");
             actual.mostrarTarea();
             System.out.print("\n\n");
+        }
+    }
+    public void mostrarColaboradores (String descripcion){
+        for(int i=0;i< lista.tamano();i++){
+            if(lista.recuperar(i).getDescripcion().equals(descripcion)){
+                lista.recuperar(i).mostrarColab();
+            }
         }
     }
 
