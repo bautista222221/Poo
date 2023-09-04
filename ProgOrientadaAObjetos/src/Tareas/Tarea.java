@@ -13,39 +13,50 @@ public class Tarea{
         this.prioridad=prioridad;
         this.fechaLimite=fechaLimite;
         this.recordatorio=fechaRecordatorio;
+        actualizar();
     }
     public void modificarDescripcion(String descripcion){
         this.descripcion=descripcion;
     }
     public void modificarPrioridad(int prioridad){
         this.prioridad=prioridad;
+        actualizar();
     }
     public void modificarFechaLimite(LocalDate fechaLimite){
         this.fechaLimite=fechaLimite;
+        actualizar();
     }
     public void modificarRecordatorio(LocalDate recordatorio){
         this.recordatorio=recordatorio;
+        actualizar();
     }
     public void tachar(){
         this.estado=true;
+        actualizar();
     }
     public void mostrarTarea(){
-        if(fechaLimite.isBefore(LocalDate.now())&&!estado) {
+        System.out.println("Descricion: "+descripcion);
+        System.out.printf("Prioridad: "+prioridad+"\n");
+        System.out.println("Vencimiento: "+fechaLimite+"\n");
+    }
+    private void actualizar(){
+        if((fechaLimite.isBefore(LocalDate.now())&&!estado)&&(!descripcion.contains("(Vencida)..."))){
             descripcion="(Vencida)..."+descripcion;
         }
-        if(estado){
+        else if(estado){
+            StringBuilder sb=new StringBuilder();
             for (char c:descripcion.toCharArray()) {
-                System.out.print(c+"̶");
+                sb.append(c);
+                sb.append("̶");
             }
-            System.out.print("\n");
+            descripcion=sb.toString();
+            descripcion+="\n";
         }else{
-            if(recordatorio.isBefore(LocalDate.now())){
+            if(recordatorio.isBefore(LocalDate.now())&&(!descripcion.contains("(Por vencer)..."))){
                 descripcion="(Por vencer)..."+descripcion;
                 prioridad=1;
             }
-            System.out.println(descripcion);
         }
-        System.out.printf("Prioridad: %d\n",prioridad);
     }
     public int prioridad(){
         return prioridad;
@@ -59,5 +70,8 @@ public class Tarea{
     }
     public String getDescripcion(){
         return descripcion;
+    }
+    public LocalDate getFechaLimite(){
+        return fechaLimite;
     }
 }

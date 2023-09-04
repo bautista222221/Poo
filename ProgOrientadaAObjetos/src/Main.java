@@ -28,14 +28,21 @@ public class Main {
 
     private static void getListaDeTareas() {
         ListaDeTareas listaDeTareas = new ListaDeTareas();
-        listaDeTareas.agregarTarea("Consultar repuesto del auto", 5, LocalDate.of(2023, 8,23),LocalDate.of(2023,8,17));
-        listaDeTareas.agregarTarea("Ir al supermercado mañana", 4, LocalDate.of(2023, 9,4),LocalDate.of(2023,9,3));
-        listaDeTareas.agregarTarea("Ir al cine a ver la nueva peli de Marvel", 2, LocalDate.of(2023, 9, 20),LocalDate.of(2023,9,8));
-        listaDeTareas.agregarTarea("Terminar el tp de Base de Datos 1", 1, LocalDate.of(2023, 9, 8),LocalDate.of(2023,9,2));
-        listaDeTareas.tacharTarea("Consultar repuesto del auto");
-        listaDeTareas.modificar("Ir al supermercado pasado-mañana",3,LocalDate.of(2023,9,5),LocalDate.of(2023,9,4),2);
+        listaDeTareas.agregarTarea("Consultar repuesto del auto.", 5, LocalDate.of(2023, 8,23),LocalDate.of(2023,8,17));
+        listaDeTareas.agregarTarea("Ir al supermercado mañana.", 4, LocalDate.of(2023, 9,4),LocalDate.of(2023,9,3));
+        listaDeTareas.agregarTarea("Ir al cine a ver la nueva peli de Marvel.", 2, LocalDate.of(2023, 9, 20),LocalDate.of(2023,9,8));
+        listaDeTareas.agregarTarea("Terminar el tp de Base de Datos 1.", 1, LocalDate.of(2023, 9, 8),LocalDate.of(2023,9,2));
+        listaDeTareas.agregarTarea("Tender la ropa.",2,LocalDate.of(2023,9,4),LocalDate.of(2023,9,4));
+        listaDeTareas.agregarTarea("Estudiar para Jorge.",2,LocalDate.of(2023,9,10),LocalDate.of(2023,9,8));
+        listaDeTareas.tacharTarea("Consultar repuesto del auto.");
+        listaDeTareas.modificar("Ir al supermercado pasado-mañana.",3,LocalDate.of(2023,9,5),LocalDate.of(2023,9,4),3);
+        System.out.println("\n\n\n\n");
+        listaDeTareas.listaDeTareasNoVencidas().mostrarLista();
+        System.out.println("\n\n\n\n");
         listaDeTareas.mostrarLista();
     }
+
+
 
     private static void getBiblioteca() {
         Biblioteca biblioteca = new Biblioteca();
@@ -52,6 +59,8 @@ public class Main {
         System.out.println("Los ejemplares totales prestados son: " + biblioteca.getCantPrestadosTotales());
     }
 
+
+
     private static void getEcuaciondeSegundoGrado(){
         EcuacionDeSegundoGrado ecuacion=new EcuacionDeSegundoGrado(1,-3,2);
         ecuacion.mostrarRaices();
@@ -67,10 +76,14 @@ public class Main {
         ecuacion4.calcularValorDeY(-3);
     }
 
+
+
     private static void getPassword(){
         ColeccionDeContrasenas lista=new ColeccionDeContrasenas(10);
         lista.mostrarColeccion();
     }
+
+
 
     private static void getFecha(){
         Fecha fecha=new Fecha("22-03-2004");
@@ -85,6 +98,9 @@ public class Main {
         System.out.println("La fecha es anterior? "+fecha2.fechaAnterior(fecha3));
         System.out.println("La fecha es posterior? "+fecha.fechaPosterior(fecha4));
     }
+
+
+
     private static void getJuego(){
         Juego juego=new Juego();
         juego.agregarJugador("Bautista");
@@ -98,4 +114,7 @@ public class Main {
         juego.mostrarPuntos("Bautista");
         juego.ganador();
     }
+
+
+
 }

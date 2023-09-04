@@ -14,7 +14,7 @@ public class ListaDeTareas {
         }else{
             int contador=0;
             Tarea buscador=lista.recuperar(contador);
-            while((buscador.prioridad()<tarea.prioridad())&&(contador<lista.tamano()-1)){
+            while((buscador.prioridad()<=tarea.prioridad())&&(buscador.getFechaLimite().isAfter(tarea.getFechaLimite()))&&(contador<lista.tamano()-1)){
                 contador++;
                 buscador=lista.recuperar(contador);
             }
@@ -49,14 +49,43 @@ public class ListaDeTareas {
         if(lista.vacia()){
             throw new EmptyStackException();
         }
+        ordenar();
         int contador=0;
         Tarea actual;
         while(contador<lista.tamano()){
             actual=lista.recuperar(contador);
             contador++;
-            System.out.printf("Tarea %d\n",contador);
+            System.out.printf("Tarea "+contador+"\n");
             actual.mostrarTarea();
             System.out.print("\n\n");
         }
+    }
+
+    public Tarea recuperarTarea(String desripcion){
+        for(int i=0;i< lista.tamano();i++){
+            if(lista.recuperar(i).getDescripcion().equals(desripcion)){
+                return lista.recuperar(i);
+            }
+        }
+        return null;
+    }
+    public ListaDeTareas listaDeTareasNoVencidas(){
+        ListaDeTareas listaNoVencidas=new ListaDeTareas();
+        for(int i=0;i< lista.tamano();i++){
+            if((!lista.recuperar(i).estaVencida())&&(!lista.recuperar(i).estaCompleta())){
+                listaNoVencidas.agregarEnLista(lista.recuperar(i));
+            }
+        }
+        return listaNoVencidas;
+    }
+    private Lista<Tarea> getLista(){
+        return lista;
+    }
+    private void ordenar(){
+        ListaDeTareas listaNueva=new ListaDeTareas();
+        for(int i=0;i<lista.tamano();i++){
+            listaNueva.agregarEnLista(lista.recuperar(i));
+        }
+        this.lista=listaNueva.getLista();
     }
 }
