@@ -1,9 +1,15 @@
+import Biblioteca.Biblioteca;
+import Contrasenas.ColeccionDeContrasenas;
+import Juego.Juego;
+import Tareas.ListaDeTareas;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 public class Main {
+
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password. \n5-Fecha. ");
+        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password. \n5-Fecha. \n6-Juego. ");
         int numero=sc.nextInt();
         switch (numero) {
             case 1 -> getListaDeTareas();
@@ -11,21 +17,22 @@ public class Main {
             case 3 -> getEcuaciondeSegundoGrado();
             case 4 -> getPassword();
             case 5 -> getFecha();
+            case 6 -> getJuego();
             default -> System.out.println("Ingrese un valor valido!");
         }
     }
 
+
+
+
+
     private static void getListaDeTareas() {
-        Tarea tarea1 = new Tarea("Consultar repuesto del auto", 5, LocalDate.of(2023, 8,23),LocalDate.of(2023,8,17));
-        tarea1.tachar();
-        Tarea tarea2 = new Tarea("Ir al supermercado mañana", 4, LocalDate.of(2023, 9,4),LocalDate.of(2023,9,3));
-        Tarea tarea3 = new Tarea("Ir al cine a ver la nueva peli de Marvel", 2, LocalDate.of(2023, 9, 20),LocalDate.of(2023,9,8));
-        Tarea tarea4 = new Tarea("Terminar el tp de Base de Datos 1", 1, LocalDate.of(2023, 9, 8),LocalDate.of(2023,9,2));
         ListaDeTareas listaDeTareas = new ListaDeTareas();
-        listaDeTareas.agregar(tarea1);
-        listaDeTareas.agregar(tarea2);
-        listaDeTareas.agregar(tarea3);
-        listaDeTareas.agregar(tarea4);
+        listaDeTareas.agregarTarea("Consultar repuesto del auto", 5, LocalDate.of(2023, 8,23),LocalDate.of(2023,8,17));
+        listaDeTareas.agregarTarea("Ir al supermercado mañana", 4, LocalDate.of(2023, 9,4),LocalDate.of(2023,9,3));
+        listaDeTareas.agregarTarea("Ir al cine a ver la nueva peli de Marvel", 2, LocalDate.of(2023, 9, 20),LocalDate.of(2023,9,8));
+        listaDeTareas.agregarTarea("Terminar el tp de Base de Datos 1", 1, LocalDate.of(2023, 9, 8),LocalDate.of(2023,9,2));
+        listaDeTareas.tacharTarea("Consultar repuesto del auto");
         listaDeTareas.modificar("Ir al supermercado pasado-mañana",3,LocalDate.of(2023,9,5),LocalDate.of(2023,9,4),2);
         listaDeTareas.mostrarLista();
     }
@@ -61,10 +68,6 @@ public class Main {
     }
 
     private static void getPassword(){
-        /*Password pass=new Password(10);
-        pass.generarPassword();
-        pass.esSegura();
-        String contrasena=pass.getPassword();*/
         ColeccionDeContrasenas lista=new ColeccionDeContrasenas(10);
         lista.mostrarColeccion();
     }
@@ -81,5 +84,18 @@ public class Main {
         System.out.println("La primer fecha esta entre las otras dos? "+fecha.entreMedio(fecha4,fecha3));
         System.out.println("La fecha es anterior? "+fecha2.fechaAnterior(fecha3));
         System.out.println("La fecha es posterior? "+fecha.fechaPosterior(fecha4));
+    }
+    private static void getJuego(){
+        Juego juego=new Juego();
+        juego.agregarJugador("Bautista");
+        juego.agregarJugador("Pedro");
+        juego.agregarJugador("Pablo");
+        juego.agregarPalabra("WWWzzzzZZ","Bautista");
+        juego.agregarPalabra("Perro","Bautista");
+        juego.agregarPalabra("Zorro","Pedro");
+        juego.agregarPalabra("Esternocleidomastiodeo","Pablo");
+        juego.palabrasJugador("Bautista");
+        juego.mostrarPuntos("Bautista");
+        juego.ganador();
     }
 }

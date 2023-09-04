@@ -1,3 +1,5 @@
+package TADS;
+
 public class Lista<T> {
     private class Nodo{
         T valor;

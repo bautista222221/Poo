@@ -1,3 +1,5 @@
+package Tareas;
+
 import java.time.LocalDate;
 public class Tarea{
     private String descripcion;
@@ -5,7 +7,7 @@ public class Tarea{
     private int prioridad;
     private LocalDate fechaLimite;
     private LocalDate recordatorio;
-    Tarea(String descripcion,int prioridad,LocalDate fechaLimite,LocalDate fechaRecordatorio){
+    public Tarea(String descripcion, int prioridad, LocalDate fechaLimite, LocalDate fechaRecordatorio){
         this.descripcion=descripcion;
         this.estado=false;
         this.prioridad=prioridad;

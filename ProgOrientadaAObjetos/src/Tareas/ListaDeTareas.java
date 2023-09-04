@@ -1,9 +1,14 @@
+package Tareas;
 import java.time.LocalDate;
 import java.util.EmptyStackException;
-
+import TADS.Lista;
 public class ListaDeTareas {
     Lista<Tarea> lista=new Lista<>();
-    public void agregar(Tarea tarea){
+    public void agregarTarea(String descripcion,int prioridad, LocalDate fechaLimite,LocalDate recordatorio) {
+        Tarea tarea = new Tarea(descripcion, prioridad, fechaLimite, recordatorio);
+        agregarEnLista(tarea);
+    }
+    private void agregarEnLista(Tarea tarea){
         if(lista.vacia()){
             lista.agregar(tarea);
         }else{
@@ -30,7 +35,14 @@ public class ListaDeTareas {
         if(prioridadAnt==nueva.prioridad()){
             lista.insertar(posicionTarea,nueva);
         }else{
-            agregar(nueva);
+            agregarEnLista(nueva);
+        }
+    }
+    public void tacharTarea(String desripcion){
+        for(int i=0;i< lista.tamano();i++){
+            if(lista.recuperar(i).getDescripcion().equals(desripcion)){
+                lista.recuperar(i).tachar();
+            }
         }
     }
     public void mostrarLista(){

@@ -1,12 +1,14 @@
-import java.security.IdentityScope;
+package Biblioteca;
+
+import TADS.Lista;
 
 public class Biblioteca {
-    private final Lista <Libro> lista;
+    private final Lista<Libro> lista;
     public Biblioteca (){
         this.lista = new Lista<>();
     }
     public void nuevoLibro (String titulo, String autor, int cantHojas, String isbn){
-        Libro libro1 = new Libro (titulo, autor, cantHojas, isbn);
+        Libro libro1 = new Libro(titulo, autor, cantHojas, isbn);
         lista.agregar(libro1);
     }
     public void agregarEjemplares(String titulo, int cantidad){
@@ -47,14 +49,14 @@ public class Biblioteca {
                 System.out.println("Tiene más hojas: " + libro1.getTitulo());
             }
             else {
-                System.out.println("Tienes más hojas: " + libro2.getTitulo());
+                System.out.println("Tiene más hojas: " + libro2.getTitulo());
             }
         }
         else {
             System.out.println("No se encontraron los libros");
         }
     }
-    public boolean prestar (String titulo) {
+    public boolean prestar(String titulo) {
         Libro libro1 = null;
         int longitud = lista.tamano();
         for (int j=0; j<longitud; j++) {

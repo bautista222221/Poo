@@ -1,3 +1,7 @@
+package Contrasenas;
+
+import TADS.Lista;
+
 public class ColeccionDeContrasenas {
     private final Lista<Password> lista;
     public ColeccionDeContrasenas(int longitud){
