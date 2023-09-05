@@ -80,7 +80,7 @@ public class Biblioteca {
     public boolean devolver (Ejemplar ejemplar, int dni){
         for(int i=0;i<prestamos.tamano();i++){
             if(prestamos.recuperar(i).getSocio().getDni()==dni&&prestamos.recuperar(i).getEjemplar().equals(ejemplar)){
-                prestamos.recuperar(i).getEjemplar().getLibro().devolverLibro(ejemplar);
+                prestamos.recuperar(i).getEjemplar().devolver();
                 prestamos.eliminar(i);
                 return true;
             }
@@ -108,5 +108,11 @@ public class Biblioteca {
             return "No";
         }
         return descripcion;
+    }
+    public void mostrarPrestados(){
+        for(int i=0;i<prestamos.tamano();i++){
+            System.out.println("Socio: "+prestamos.recuperar(i).getSocio().getNombre()+".\nLibro prestado: "+prestamos.recuperar(i).getEjemplar().getLibro().getTitulo()+".");
+        }
+        System.out.println("Libros totales prestados: "+getCantPrestadosTotales());
     }
 }
