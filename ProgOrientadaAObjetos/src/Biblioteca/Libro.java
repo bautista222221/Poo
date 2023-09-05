@@ -1,4 +1,5 @@
 package Biblioteca;
+import TADS.Lista;
 
 public class Libro {
 
@@ -10,31 +11,40 @@ public class Libro {
     private int cantTotales;
 
     private String isbn;
+    private Lista<Ejemplar> ejemplares;
 
     public Libro (String titulo, String autor, int cantHojas, String isbn){
         this.titulo = titulo;
         this.autor = autor;
         this.cantHojas = cantHojas;
         this.isbn = isbn;
+        ejemplares= new Lista<>();
         cantEjemplares = 1;
         cantTotales = 1;
     }
 
     public void aumentarCantidad (){
+        Ejemplar ejemplar=new Ejemplar(this);
+        ejemplares.agregar(ejemplar);
         cantEjemplares++;
         cantTotales++;
     }
-
-    public boolean prestarLibro (){
-        if (cantEjemplares > 1){
-            cantEjemplares--;
-            System.out.println("Libro prestado con exito!!!");
-            return true;
+    public boolean puedePrestar(){
+        for(int i=0;i<ejemplares.tamano();i++){
+            if(ejemplares.recuperar(i).getPrestado()){
+                return true;
+            }
         }
-        else {
-            System.out.println("No hay suficientes ejemplares");
-            return false;
+        return false;
+    }
+    public Ejemplar prestarLibro (){
+        for(int i=0;i<ejemplares.tamano();i++){
+            if(ejemplares.recuperar(i).getPrestado()){
+                ejemplares.recuperar(i).prestar();
+                return ejemplares.recuperar(i);
+            }
         }
+        return null;
     }
     public boolean devolverLibro(){
         if(cantEjemplares<cantTotales) {

@@ -1,5 +1,7 @@
 import Biblioteca.Biblioteca;
 import Contrasenas.ColeccionDeContrasenas;
+import EcuacionDeSegundoGrado.EcuacionDeSegundoGrado;
+import Fecha.Fecha;
 import Juego.Juego;
 import Tareas.ListaDeTareas;
 
@@ -9,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password. \n5-Fecha. \n6-Juego. ");
+        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password. \n5-Fecha.Fecha. \n6-Juego. ");
         int numero=sc.nextInt();
         switch (numero) {
             case 1 -> getListaDeTareas();

@@ -1,3 +1,5 @@
+package EcuacionDeSegundoGrado;
+
 public class EcuacionDeSegundoGrado {
 
     private final double a;
