@@ -26,7 +26,10 @@ public class Dinero {
     public double getSaldo() {
         return this.saldo;
     }
-    public void restar(Dinero dinero){
-        saldo-=dinero.getSaldo();
+    public Dinero restar(Dinero dinero){
+        return new Dinero(this.saldo- dinero.saldo,this.moneda);
+    }
+    public Dinero restar(double dinero){
+        return this.restar(new Dinero(dinero,this.moneda));
     }
 }
