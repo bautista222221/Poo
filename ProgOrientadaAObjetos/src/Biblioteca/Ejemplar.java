@@ -9,7 +9,7 @@ public class Ejemplar {
         this.disponible=true;
         this.libro=libro;
     }
-    public boolean getPrestado(){
+    public boolean getDisponible(){
         return disponible;
     }
     public Libro getLibro() {

@@ -6,10 +6,6 @@ public class Libro {
     private final String titulo;
     private final String autor;
     private final int cantHojas;
-    private int cantEjemplares;
-
-    private int cantTotales;
-
     private String isbn;
     private Lista<Ejemplar> ejemplares;
 
@@ -19,19 +15,15 @@ public class Libro {
         this.cantHojas = cantHojas;
         this.isbn = isbn;
         ejemplares= new Lista<>();
-        cantEjemplares = 1;
-        cantTotales = 1;
     }
 
     public void aumentarCantidad (){
         Ejemplar ejemplar=new Ejemplar(this);
         ejemplares.agregar(ejemplar);
-        cantEjemplares++;
-        cantTotales++;
     }
     public boolean puedePrestar(){
         for(int i=0;i<ejemplares.tamano();i++){
-            if(ejemplares.recuperar(i).getPrestado()){
+            if(ejemplares.recuperar(i).getDisponible()){
                 return true;
             }
         }
@@ -39,19 +31,21 @@ public class Libro {
     }
     public Ejemplar prestarLibro (){
         for(int i=0;i<ejemplares.tamano();i++){
-            if(ejemplares.recuperar(i).getPrestado()){
+            if(ejemplares.recuperar(i).getDisponible()){
                 ejemplares.recuperar(i).prestar();
                 return ejemplares.recuperar(i);
             }
         }
         return null;
     }
-    public boolean devolverLibro(){
-        if(cantEjemplares<cantTotales) {
-            cantEjemplares++;
-            return true;
+    public boolean devolverLibro(Ejemplar ejemplar){
+        for(int i=0;i<ejemplares.tamano();i++){
+            if(ejemplares.recuperar(i).equals(ejemplar)){
+                ejemplares.recuperar(i).devolver();
+                return true;
+            }
         }
-        else return false;
+        return false;
     }
 
     public String getTitulo (){
@@ -69,10 +63,16 @@ public class Libro {
     }
 
     public int cantidadPrestados (){
-        return (cantTotales - cantEjemplares);
+        int prestados=0;
+        for(int i=0;i< ejemplares.tamano();i++){
+            if(ejemplares.recuperar(i).getDisponible()){
+                prestados++;
+            }
+        }
+        return prestados;
     }
 
     public String mostarDatos (){
-        return "El libro: " + titulo + " creado por el autor: " + autor + " tiene: " + cantHojas + " hojas y quedan: " + cantEjemplares + " disponibles y se prestaron: " + cantidadPrestados();
+        return "El libro: " + titulo + " creado por el autor: " + autor + " tiene: " + cantHojas + " hojas y quedan: " +ejemplares.tamano()+ " disponibles y se prestaron: " + cantidadPrestados();
     }
 }

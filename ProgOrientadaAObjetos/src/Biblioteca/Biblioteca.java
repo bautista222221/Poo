@@ -77,10 +77,10 @@ public class Biblioteca {
         return false;
     }
 
-    public boolean devolver (String titulo, int dni){
+    public boolean devolver (Ejemplar ejemplar, int dni){
         for(int i=0;i<prestamos.tamano();i++){
-            if(prestamos.recuperar(i).getSocio().getDni()==dni&&prestamos.recuperar(i).getEjemplar().getLibro().getTitulo().equals(titulo)){
-                prestamos.recuperar(i).getEjemplar().devolver();
+            if(prestamos.recuperar(i).getSocio().getDni()==dni&&prestamos.recuperar(i).getEjemplar().equals(ejemplar)){
+                prestamos.recuperar(i).getEjemplar().getLibro().devolverLibro(ejemplar);
                 prestamos.eliminar(i);
                 return true;
             }
