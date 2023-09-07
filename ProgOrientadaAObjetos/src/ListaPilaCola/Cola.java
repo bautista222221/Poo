@@ -1,4 +1,4 @@
-package TADS;
+package ListaPilaCola;
 
 public class Cola <T>{
     private class Nodo{

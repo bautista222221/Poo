@@ -1,4 +1,4 @@
-package TADS;
+package ListaPilaCola;
 
 public class Lista<T> {
     private class Nodo{
@@ -65,7 +65,7 @@ public class Lista<T> {
     }
 
     public void insertar(int indice,T elemento) {
-        if (indice < 0 || indice >= tamano) {
+        if (indice < 0 || indice > tamano) {
             throw new IndexOutOfBoundsException("El indice esta fuera de rango!");
         }
         if (indice == 0) {
@@ -75,7 +75,7 @@ public class Lista<T> {
         } else {
             Nodo actual = cabeza;
             int contador = 0;
-            while (contador < indice) {
+            while (contador < indice-1) {
                 contador++;
                 actual = actual.siguiente;
             }

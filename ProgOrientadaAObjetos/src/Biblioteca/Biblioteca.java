@@ -1,6 +1,6 @@
 package Biblioteca;
 
-import TADS.Lista;
+import ListaPilaCola.Lista;
 
 public class Biblioteca {
     private final Lista<Libro> lista;

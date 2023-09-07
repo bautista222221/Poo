@@ -1,4 +1,4 @@
-package TADS;
+package ListaPilaCola;
 
 public class ListaEnlazadaDoble<T>{
     private class Nodo{

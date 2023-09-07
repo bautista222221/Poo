@@ -1,7 +1,10 @@
 import Biblioteca.Biblioteca;
 import Contrasenas.ColeccionDeContrasenas;
+import EcuacionDeSegundoGrado.EcuacionDeSegundoGrado;
+import Fecha.Fecha;
 import Juego.Juego;
 import Tareas.ListaDeTareas;
+import Juego.Diccionario;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -30,15 +33,15 @@ public class Main {
         ListaDeTareas listaDeTareas = new ListaDeTareas();
         listaDeTareas.agregarTarea("Consultar repuesto del auto.", 5, LocalDate.of(2023, 9,23),LocalDate.of(2023,9,17));
         listaDeTareas.agregarColaborador("Ir al supermercado mañana.", "Juan Pedro Lopez");
-        listaDeTareas.agregarColaborador("Ir al supermercado mañana.", "Armando Paredes");
-        listaDeTareas.agregarColaborador("Consultar repuesto del auto.", "Esteban Quito");
+        listaDeTareas.agregarColaborador("Ir al supermercado mañana.", "Bautista Pereyra Bcuh");
+        listaDeTareas.agregarColaborador("Consultar repuesto del auto.", "Bautista Pereyra Buch");
         listaDeTareas.agregarTarea("Ir al supermercado mañana.", 4, LocalDate.of(2023, 9,4),LocalDate.of(2023,9,3));
         listaDeTareas.agregarTarea("Ir al cine a ver la nueva peli de Marvel.", 2, LocalDate.of(2023, 9, 20),LocalDate.of(2023,9,8));
         listaDeTareas.agregarTarea("Terminar el tp de Base de Datos 1.", 1, LocalDate.of(2023, 9, 8),LocalDate.of(2023,9,2));
         listaDeTareas.agregarTarea("Tender la ropa.",2,LocalDate.of(2023,9,4),LocalDate.of(2023,9,4));
         listaDeTareas.agregarTarea("Estudiar para Jorge.",2,LocalDate.of(2023,9,10),LocalDate.of(2023,9,8));
-        listaDeTareas.tacharTarea("Consultar repuesto del auto.", "Esteban Quito");
-        listaDeTareas.modificar("Ir al supermercado pasado-mañana.",3,LocalDate.of(2023,9,5),LocalDate.of(2023,9,4),3);
+        listaDeTareas.tacharTarea("Consultar repuesto del auto.", "Bautista Pereyra Buch");
+        listaDeTareas.modificar("Ir al supermercado mañana.","Ir al supermercado pasado-mañana.",3,LocalDate.of(2023,9,5),LocalDate.of(2023,9,4));
         listaDeTareas.mostrarColaboradores("Consultar repuesto del auto.");
         listaDeTareas.mostrarColaboradores("Ir al supermercado mañana.");
         System.out.println("\n\n\n\n");
@@ -69,16 +72,16 @@ public class Main {
     private static void getEcuaciondeSegundoGrado(){
         EcuacionDeSegundoGrado ecuacion=new EcuacionDeSegundoGrado(1,-3,2);
         ecuacion.mostrarRaices();
-        ecuacion.calcularValorDeY(5);
+        System.out.println("El valor de F(5) es de: "+ecuacion.calcularValorDeY(5));
         EcuacionDeSegundoGrado ecuacion2=new EcuacionDeSegundoGrado(5,8,2);
         ecuacion2.mostrarRaices();
-        ecuacion2.calcularValorDeY(2);
+        System.out.println("El valor de F(2) es de: "+ecuacion2.calcularValorDeY(2));
         EcuacionDeSegundoGrado ecuaucion3=new EcuacionDeSegundoGrado(2,-4,2);
         ecuaucion3.mostrarRaices();
-        ecuaucion3.calcularValorDeY(6);
+        System.out.println("El valor de F(6) es de: "+ecuaucion3.calcularValorDeY(6));
         EcuacionDeSegundoGrado ecuacion4=new EcuacionDeSegundoGrado(1,4,5);
         ecuacion4.mostrarRaices();
-        ecuacion4.calcularValorDeY(-3);
+        System.out.println("El valor de F(-3) es de: "+ecuacion4.calcularValorDeY(-3));
     }
 
 
@@ -107,17 +110,23 @@ public class Main {
 
 
     private static void getJuego(){
-        Juego juego=new Juego();
+        Diccionario diccionario=new Diccionario();
+        diccionario.agregarPalabra("Perro");
+        diccionario.agregarPalabra("Zorro");
+        diccionario.agregarPalabra("Esternocleidomastoideo");
+        diccionario.agregarPalabra("Supercalifragilisticoexpialidoso");
+        Juego juego=new Juego(diccionario);
         juego.agregarJugador("Bautista");
         juego.agregarJugador("Pedro");
         juego.agregarJugador("Pablo");
         juego.agregarPalabra("WWWzzzzZZ","Bautista");
+        juego.agregarPalabra("Supercalifragilisticoexpialidoso","Bautista");
         juego.agregarPalabra("Perro","Bautista");
         juego.agregarPalabra("Zorro","Pedro");
         juego.agregarPalabra("Esternocleidomastiodeo","Pablo");
         juego.palabrasJugador("Bautista");
         juego.mostrarPuntos("Bautista");
-        juego.ganador();
+        System.out.println("El ganador es: "+juego.ganador());
     }
 
 

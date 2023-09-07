@@ -38,7 +38,7 @@ public class Password {
                 numeros++;
             }
         }
-        this.segura= (mayusculas > 2) && (minusculas > 1) && (numeros > 1);
+        this.segura= (mayusculas >= 2) && (minusculas >= 1) && (numeros >= 1);
     }
     public String getPassword(){
         return password;

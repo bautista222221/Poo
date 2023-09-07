@@ -1,5 +1,5 @@
 package Tareas;
-import TADS.Lista;
+import ListaPilaCola.Lista;
 import java.time.LocalDate;
 public class Tarea{
     private String descripcion;
@@ -14,7 +14,7 @@ public class Tarea{
         this.prioridad=prioridad;
         this.fechaLimite=fechaLimite;
         this.recordatorio=fechaRecordatorio;
-        colaboradores = new Lista ();
+        colaboradores = new Lista<>();
     }
     public void agregarColab (String colaborador){
         colaboradores.agregar(colaborador);
@@ -46,9 +46,13 @@ public class Tarea{
     }
     public void mostrarTarea(){
         actualizar();
-        System.out.println("Descricion: "+descripcion);
-        System.out.printf("Prioridad: "+prioridad+"\n");
-        System.out.println("Vencimiento: "+fechaLimite+"\n");
+        if(!estado) {
+            System.out.println("Descricion: " + descripcion);
+            System.out.println("Prioridad: " + prioridad);
+            System.out.println("Vencimiento: " + fechaLimite);
+        }else{
+            System.out.println("Descripcion: "+descripcion);
+        }
     }
     private void actualizar(){
         if((fechaLimite.isBefore(LocalDate.now())&&!estado)&&(!descripcion.contains("(Vencida)..."))){
@@ -61,8 +65,7 @@ public class Tarea{
                 sb.append("̶");
             }
             descripcion=sb.toString();
-            descripcion+= "Realizada el: " + fechaLimite;
-            descripcion+="\n";
+            descripcion+= "\nRealizada el: " + fechaLimite;
         }else{
             if(recordatorio.isBefore(LocalDate.now())&&(!descripcion.contains("(Por vencer)..."))){
                 descripcion="(Por vencer)..."+descripcion;

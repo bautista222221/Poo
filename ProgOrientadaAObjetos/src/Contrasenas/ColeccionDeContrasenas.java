@@ -1,17 +1,17 @@
 package Contrasenas;
 
-import TADS.Lista;
+import ListaPilaCola.Lista;
 
 public class ColeccionDeContrasenas {
     private final Lista<Password> lista;
     public ColeccionDeContrasenas(int longitud){
-        this.lista=new Lista<Password>();
+        this.lista=new Lista<>();
         for(int i=0;i<10;i++){
             Password pass=new Password(longitud);
             lista.agregar(pass);
         }
     }
-    public Lista coleccion(){
+    public Lista<Password> getLista(){
         return lista;
     }
     public void mostrarColeccion(){
