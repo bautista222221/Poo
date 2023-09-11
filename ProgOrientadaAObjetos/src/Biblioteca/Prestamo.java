@@ -1,10 +1,8 @@
-package Biblioteca;
-
-import Fecha.Fecha;
+import Biblioteca.Biblioteca;
+import Biblioteca.Libro;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
+import java.util.Scanner;
 public class Prestamo {
 
     LocalDate fechaP;
