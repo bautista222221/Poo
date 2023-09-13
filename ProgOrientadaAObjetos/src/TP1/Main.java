@@ -1,10 +1,12 @@
-import Biblioteca.Biblioteca;
-import Contrasenas.ColeccionDeContrasenas;
-import EcuacionDeSegundoGrado.EcuacionDeSegundoGrado;
-import Fecha.Fecha;
-import Juego.Juego;
-import Tareas.ListaDeTareas;
-import Juego.Diccionario;
+package TP1;
+
+import TP1.Biblioteca.Biblioteca;
+import TP1.Contrasenas.ColeccionDeContrasenas;
+import TP1.EcuacionDeSegundoGrado.EcuacionDeSegundoGrado;
+import TP1.Fecha.Fecha;
+import TP1.Juego.Juego;
+import TP1.Tareas.ListaDeTareas;
+import TP1.Juego.Diccionario;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -12,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("Que quiere testear? \n1-Lista de Tareas.\n2-Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password. \n5-Fecha. \n6-Juego. ");
+        System.out.println("Que quiere testear? \n1-Lista de TP1.Tareas.\n2-TP1.Biblioteca. \n3-Ecuacion de Segundo Grado. \n4-Password. \n5-TP1.Fecha. \n6-TP1.Juego. ");
         int numero=sc.nextInt();
         switch (numero) {
             case 1 -> getListaDeTareas();

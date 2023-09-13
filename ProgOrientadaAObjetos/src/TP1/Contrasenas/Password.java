@@ -1,4 +1,4 @@
-package Contrasenas;
+package TP1.Contrasenas;
 
 import java.util.Random;
 import java.util.Scanner;

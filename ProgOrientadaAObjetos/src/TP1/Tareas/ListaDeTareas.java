@@ -1,7 +1,7 @@
-package Tareas;
+package TP1.Tareas;
 import java.time.LocalDate;
 import java.util.EmptyStackException;
-import ListaPilaCola.Lista;
+import TP1.ListaPilaCola.Lista;
 public class ListaDeTareas {
     Lista<Tarea> lista=new Lista<>();
     public void agregarTarea(String descripcion,int prioridad, LocalDate fechaLimite,LocalDate recordatorio) {

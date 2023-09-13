@@ -1,6 +1,6 @@
-package Juego;
+package TP1.Juego;
 
-import ListaPilaCola.Lista;
+import TP1.ListaPilaCola.Lista;
 
 public class Juego {
     private final Lista<Jugador> listaDeJugadores=new Lista<>();

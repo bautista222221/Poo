@@ -1,4 +1,4 @@
-package EcuacionDeSegundoGrado;
+package TP1.EcuacionDeSegundoGrado;
 
 public class EcuacionDeSegundoGrado {
 

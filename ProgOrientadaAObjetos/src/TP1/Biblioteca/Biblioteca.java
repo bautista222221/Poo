@@ -1,6 +1,6 @@
-package Biblioteca;
+package TP1.Biblioteca;
 
-import ListaPilaCola.Lista;
+import TP1.ListaPilaCola.Lista;
 
 public class Biblioteca {
     private final Lista<Libro> lista;

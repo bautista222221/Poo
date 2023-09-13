@@ -1,4 +1,4 @@
-package Biblioteca;
+package TP1.Biblioteca;
 
 public class Libro {
 

@@ -1,4 +1,4 @@
-package ListaPilaCola;
+package TP1.ListaPilaCola;
 
 public class Cola <T>{
     private class Nodo{

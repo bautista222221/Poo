@@ -1,4 +1,4 @@
-package ListaPilaCola;
+package TP1.ListaPilaCola;
 
 import java.util.EmptyStackException;
 

@@ -1,4 +1,4 @@
-package Fecha;
+package TP1.Fecha;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -36,8 +36,8 @@ public class Fecha {
 
     /**
      * Determinar si una fecha esta entre otras dos
-     * @param fecha1 Fecha.Fecha de inicio
-     * @param fecha2 Fecha.Fecha final
+     * @param fecha1 TP1.Fecha.TP1.Fecha de inicio
+     * @param fecha2 TP1.Fecha.TP1.Fecha final
      * @return True/False
      */
 
@@ -47,7 +47,7 @@ public class Fecha {
 
     /**
      * Determinarr si una fecha es posterior a otra
-     * @param fechaObjetivo Fecha.Fecha determinante
+     * @param fechaObjetivo TP1.Fecha.TP1.Fecha determinante
      * @return True/False
      */
     public boolean fechaPosterior(LocalDate fechaObjetivo){
@@ -55,7 +55,7 @@ public class Fecha {
     }
     /**
      * Determinarr si una fecha es anterior a otra
-     * @param fechaObjetivo Fecha.Fecha determinante
+     * @param fechaObjetivo TP1.Fecha.TP1.Fecha determinante
      * @return True/False
      */
     public boolean fechaAnterior(LocalDate fechaObjetivo){

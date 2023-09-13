@@ -1,5 +1,5 @@
-package Juego;
-import ListaPilaCola.Lista;
+package TP1.Juego;
+import TP1.ListaPilaCola.Lista;
 public class Diccionario {
     private Lista<String> palabras;
     public Diccionario(){

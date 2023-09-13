@@ -1,6 +1,6 @@
-package Contrasenas;
+package TP1.Contrasenas;
 
-import ListaPilaCola.Lista;
+import TP1.ListaPilaCola.Lista;
 
 public class ColeccionDeContrasenas {
     private final Lista<Password> lista;

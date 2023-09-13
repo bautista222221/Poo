@@ -1,5 +1,5 @@
-package Tareas;
-import ListaPilaCola.Lista;
+package TP1.Tareas;
+import TP1.ListaPilaCola.Lista;
 import java.time.LocalDate;
 public class Tarea{
     private String descripcion;
