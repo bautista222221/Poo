@@ -1,7 +1,6 @@
-package TP2;
-import TP1.ListaPilaCola.Lista;
+package TP2.ClubDeportivo;
 
-import java.time.LocalDate;
+import TP1.ListaPilaCola.Lista;
 
 public class ClubDeFutbol {
     private Lista<Socio> socios;
@@ -13,7 +12,7 @@ public class ClubDeFutbol {
         return socios;
     }
     public void cobrarSuscripciones(){
-        if(LocalDate.now())
+        //if(LocalDate.now())
     }
     private boolean verificarSuscripcion(String suscripcion)throws Exception{
         if(suscripcion.equals("basica")||suscripcion.equals("intermedia")||suscripcion.equals("destacada")){

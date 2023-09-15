@@ -1,11 +1,8 @@
-import Biblioteca.Biblioteca;
-import Biblioteca.Libro;
+package TP1.Biblioteca;
 
-import java.time.LocalDate;
-import java.util.Scanner;
 public class Prestamo {
 
-    LocalDate fechaP;
+    /*LocalDate fechaP;
     LocalDate fechaD;
 
     public Prestamo (String fechaDePrestamo, String fechaDeDev){
@@ -26,5 +23,5 @@ public class Prestamo {
         }
     }
 
-
+*/
 }

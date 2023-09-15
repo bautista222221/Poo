@@ -1,4 +1,4 @@
-package TP2;
+package TP2.ClubDeportivo;
 
 public class Socio {
     private String nombre;
