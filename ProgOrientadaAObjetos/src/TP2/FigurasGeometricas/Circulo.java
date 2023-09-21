@@ -1,5 +1,5 @@
 package TP2.FigurasGeometricas;
-public class Circulo extends DosD {
+public class Circulo extends DosDimensiones {
 
     private final double radio;
 

@@ -3,9 +3,9 @@ package TP2.FigurasGeometricas;
 
 public class Paralelepipedo extends Poliedro {
 
-    private double arista;
     private double arista1;
     private double arista2;
+    private double arista3;
 
     public Paralelepipedo (double arista, double arista1, double arista2){
         this.arista = arista;
@@ -15,11 +15,11 @@ public class Paralelepipedo extends Poliedro {
 
     @Override
     public double getArea (){
-        return (2 * (arista * arista1) + (arista * arista2) + (arista1 * arista2));
+        return (2 * (arista1 * arista2) + (arista1 * arista3) + (arista2 * arista3));
     }
 
     @Override
     double getVolumen() {
-        return (arista * arista1 * arista2);
+        return (arista1 * arista2 * arista3);
     }
 }

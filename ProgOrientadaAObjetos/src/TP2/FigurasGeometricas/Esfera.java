@@ -1,6 +1,6 @@
 package TP2.FigurasGeometricas;
 
-public class Esfera extends TresD {
+public class Esfera extends TresDimensiones {
 
     private double radio;
 

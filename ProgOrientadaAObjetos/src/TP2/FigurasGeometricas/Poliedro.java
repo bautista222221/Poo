@@ -1,5 +1,5 @@
 package TP2.FigurasGeometricas;
 
 
-abstract class Poliedro extends TresD {
+abstract class Poliedro extends TresDimensiones {
 }

@@ -1,7 +1,7 @@
 package TP2.FigurasGeometricas;
 
 
-abstract class TresD extends Figura {
+abstract class TresDimensiones extends Figura {
 
     abstract double getVolumen ();
 }
