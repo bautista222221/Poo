@@ -4,8 +4,8 @@ package TP2.FigurasGeometricas;
 
 public class Triangulo extends Poligono {
 
-    private double base;
-    private double altura;
+    private final double base;
+    private final double altura;
 
     public Triangulo (double base, double altura){
         this.base = base;

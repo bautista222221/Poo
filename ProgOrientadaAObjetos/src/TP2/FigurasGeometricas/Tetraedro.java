@@ -3,7 +3,7 @@ package TP2.FigurasGeometricas;
 
 public class Tetraedro extends Poliedro {
 
-    private double arista;
+    private final double arista;
 
     public Tetraedro (double arista){
         this.arista = arista;

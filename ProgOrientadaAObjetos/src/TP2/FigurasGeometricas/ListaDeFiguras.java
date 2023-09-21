@@ -1,7 +1,7 @@
 package TP2.FigurasGeometricas;
 import TP1.ListaPilaCola.Lista;
 public class ListaDeFiguras {
-    private Lista<Figura> lista;
+    private final Lista<Figura> lista;
     public ListaDeFiguras(){
         this.lista=new Lista<>();
     }

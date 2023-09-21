@@ -2,8 +2,8 @@ package TP2.FigurasGeometricas;
 
 public class Rectangulo extends Poligono {
 
-    private double base;
-    private double altura;
+    private final double base;
+    private final double altura;
 
     public Rectangulo (double base, double altura){
         this.base = base;

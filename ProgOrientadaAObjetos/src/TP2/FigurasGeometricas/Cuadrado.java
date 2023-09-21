@@ -2,7 +2,7 @@ package TP2.FigurasGeometricas;
 
 public class Cuadrado extends Poligono {
 
-    private double base;
+    private final double base;
 
     public Cuadrado (double base){
         this.base = base;

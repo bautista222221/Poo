@@ -2,7 +2,7 @@ package TP2.FigurasGeometricas;
 
 public class Esfera extends TresDimensiones {
 
-    private double radio;
+    private final double radio;
 
     public Esfera (double radio){
         this.radio = radio;

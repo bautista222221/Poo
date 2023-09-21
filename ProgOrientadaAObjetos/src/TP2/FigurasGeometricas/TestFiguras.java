@@ -60,6 +60,15 @@ public class TestFiguras {
         Circulo circulo=new Circulo(2);
         Triangulo triangulo=new Triangulo(3,4);
         Rectangulo rectangulo=new Rectangulo(5,6);
+        ListaDeFiguras listaDeFiguras=new ListaDeFiguras();
+        listaDeFiguras.agregarFigura(esfera);
+        listaDeFiguras.agregarFigura(cubo);
+        listaDeFiguras.agregarFigura(paralelepipedo);
+        listaDeFiguras.agregarFigura(tetraedro);
+        listaDeFiguras.agregarFigura(circulo);
+        listaDeFiguras.agregarFigura(cuadrado);
+        listaDeFiguras.agregarFigura(triangulo);
+        listaDeFiguras.agregarFigura(rectangulo);
 
     }
 }

@@ -2,7 +2,7 @@ package TP2.FigurasGeometricas;
 
 public class Cubo extends Poliedro {
 
-    private double arista;
+    private final double arista;
 
     public Cubo (double arista){
         this.arista = arista;
