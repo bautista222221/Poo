@@ -1,7 +1,5 @@
 package TP2.ClubDeportivo;
-
 import TP1.ListaPilaCola.Lista;
-
 public class ClubDeFutbol {
     private Lista<Socio> socios;
 
