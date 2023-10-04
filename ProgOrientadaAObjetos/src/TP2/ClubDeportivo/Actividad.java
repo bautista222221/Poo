@@ -1,5 +1,5 @@
 package TP2.ClubDeportivo;
 
-public class Actividad {
+public class Actividad{
 
 }
