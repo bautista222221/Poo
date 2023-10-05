@@ -25,8 +25,18 @@ public class Academia {
             }
         }
     }
-    public Comision agregarComision(String ){
+    public void agregarComision(String nombreComision, String dias, String nivel, Danza danza, Profesor profesor, String salon){
+        Comision comision = new Comision (nombreComision, dias, nivel, danza, profesor, salon);
+    }
 
+    public Comision mayorRedito (){
+        int j = 0;
+        for (int i=1; i < comisiones.tamano(); i++){
+            if (comisiones.recuperar(i).getSaldo() > comisiones.recuperar(j).getSaldo()){
+                j = i;
+            }
+        }
+        return comisiones.recuperar(j);
     }
     public void pagarProfesor(Comision comision){
         comision.pagarProfesor();
