@@ -23,7 +23,12 @@ public class Academia {
             }
         }
     }
+    public Comision agregarComision(String ){
 
+    }
+    public void pagarProfesor(Comision comision){
+        comision.pagarProfesor();
+    }
     public Lista <Alumno> getAlumnos (){
         return alumnos;
     }

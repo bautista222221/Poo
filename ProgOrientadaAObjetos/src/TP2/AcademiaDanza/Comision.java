@@ -12,12 +12,14 @@ public class Comision {
     private Danza danza;
     private Profesor profesor;
     private Lista <Alumno> alumnos;
-    public Comision (String nombreComision, String dias, String nivel, Danza danza, Profesor profesor){
+    private String salon;
+    public Comision (String nombreComision, String dias, String nivel, Danza danza, Profesor profesor,String salon){
         this.nombreComision = nombreComision;
         this.dias = dias;
         this.nivel = nivel;
         this.danza = danza;
         this.profesor = profesor;
+        this.salon=salon;
     }
 
     public String getComision(){
