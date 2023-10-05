@@ -26,7 +26,7 @@ public class Academia {
         }
     }
     public void agregarComision(String nombreComision, String dias, String nivel, Danza danza, Profesor profesor, String salon){
-        Comision comision = new Comision (nombreComision, dias, nivel, danza, profesor, salon);
+        danza.agregarComision(new Comision (nombreComision, dias, nivel, danza, profesor, salon));
     }
 
     public Comision mayorRedito (){
