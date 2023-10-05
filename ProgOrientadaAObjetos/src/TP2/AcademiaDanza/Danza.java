@@ -1,5 +1,8 @@
 package TP2.AcademiaDanza;
 import TP1.ListaPilaCola.Lista;
+
+import java.util.Objects;
+
 public class Danza {
     private String danza;
     private Lista<Comision> comisiones;
@@ -9,7 +12,7 @@ public class Danza {
     }
     public void agregarComision(Comision comision){
         for(int i=0;i< comisiones.tamano();i++){
-            if(comisiones.recuperar(i).getComision()==comision.getComision()){
+            if(Objects.equals(comisiones.recuperar(i).getComision(), comision.getComision())){
                 System.out.println("La comision ya existe!");
                 return;
             }

@@ -13,6 +13,7 @@ public class Comision {
     private Profesor profesor;
     private Lista <Alumno> alumnos;
     private String salon;
+    private int asistencias;
     public Comision (String nombreComision, String dias, String nivel, Danza danza, Profesor profesor,String salon){
         this.nombreComision = nombreComision;
         this.dias = dias;
@@ -20,6 +21,7 @@ public class Comision {
         this.danza = danza;
         this.profesor = profesor;
         this.salon=salon;
+        this.asistencias=0;
     }
 
     public String getComision(){
@@ -44,14 +46,21 @@ public class Comision {
         }
     }
     public void pagarProfesor(){
-        for(int i=0;i< alumnos.tamano();i++){
-            profesor.pagar(10.0);
-        }
+        profesor.pagar(asistencias*10);
     }
     public Lista<Alumno> getAlumnos (){
         return alumnos;
     }
 
+    public void registrarAsistencia(Alumno alumno){
+        for(int i=0;i< alumnos.tamano();i++){
+            if(alumnos.recuperar(i).getNombre().equals(alumno.getNombre())&&alumnos.recuperar(i).getDni()==alumno.getDni()){
+                asistencias++;
+            }
+        }
+    }
 
-
+    public int getSaldo() {
+        return asistencias*10;
+    }
 }

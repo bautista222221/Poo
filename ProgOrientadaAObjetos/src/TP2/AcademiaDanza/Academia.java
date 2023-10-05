@@ -7,9 +7,11 @@ import java.util.Objects;
 public class Academia {
     private Lista <Alumno> alumnos;
     private String nombre;
+    private Lista<Comision> comisiones;
     public Academia(String nombre){
         this.nombre = nombre;
-        this.alumnos = new Lista<Alumno>();
+        this.alumnos = new Lista<>();
+        this.comisiones=new Lista<>();
     }
 
     public void agregarAlumno (String nombre, int dni, int telefono, String mail){
