@@ -6,7 +6,12 @@ public class Cliente {
 
     private double compratotal;
 
-    public double getComprasFinal(double compratotal){
+    public Cliente (String nombre, String patente, double compratotal){
+        this.nombre = nombre;
+        this.patente = patente;
+        this.compratotal = compratotal;
+    }
+    public double getComprasFinal(){
         return compratotal;
     }
 
