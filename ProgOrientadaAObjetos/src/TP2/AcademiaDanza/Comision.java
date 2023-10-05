@@ -2,6 +2,8 @@ package TP2.AcademiaDanza;
 
 import TP1.ListaPilaCola.Lista;
 
+import java.util.Objects;
+
 public class Comision {
 
     private String nombreComision;
@@ -28,19 +30,23 @@ public class Comision {
     public Danza getDanza() {
         return danza;
     }
-    public void agregarAlumno (String nombre, int dni, int telefono, String mail){
-        alumnos.agregar(new Alumnos(nombre, dni, telefono, mail));
+    public void agregarAlumno (String nombre, int dni, String mail,int telefono){
+        alumnos.agregar(new Alumno(nombre, dni, mail, telefono));
     }
 
     public void eliminarAlumno (String nombre, int dni){
         for (int i=0; i < alumnos.tamano(); i++){
-            if (alumnos.recuperar(i).getNombre() == nombre && alumnos.recuperar(i).getDni == dni){
+            if (Objects.equals(alumnos.recuperar(i).getNombre(), nombre) && alumnos.recuperar(i).getDni() == dni){
                 alumnos.eliminar(i);
             }
         }
     }
-
-    public Lista<Alumnos> getAlumnos (){
+    public void pagarProfesor(){
+        for(int i=0;i< alumnos.tamano();i++){
+            profesor.pagar(10.0);
+        }
+    }
+    public Lista<Alumno> getAlumnos (){
         return alumnos;
     }
 

@@ -25,5 +25,7 @@ public class Danza {
         }
         System.out.println("La comision no existe!");
     }
-
+    public String getDanza(){
+        return danza;
+    }
 }

@@ -13,7 +13,7 @@ public class Alumno {
         this.dni=dni;
         this.telefono=telefono;
         this.mail=mail;
-        credencial=new Credencial(nombre,dni);
+        credencial=new Credencial(nombre,dni,this);
         danzas=new Lista<Danza>();
     }
     public void inscribirDanza(Danza danza){
