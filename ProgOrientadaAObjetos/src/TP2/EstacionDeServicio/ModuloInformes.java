@@ -14,7 +14,7 @@ public class ModuloInformes{
         clientes.sort(new Comparator<Cliente>() {
             @Override
             public int compare(Cliente c1, Cliente c2) {
-                return c2.getComprasFinal() - c1.getComprasFinal();
+                return (int) (c2.getComprasFinal() - c1.getComprasFinal());
             }
         });
         List<Cliente> top10=clientes.subList(0,10);
