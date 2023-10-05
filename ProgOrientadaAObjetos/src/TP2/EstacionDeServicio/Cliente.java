@@ -6,7 +6,7 @@ public class Cliente {
 
     private double compratotal;
 
-    public double getComprasfinal(double compratotal){
+    public double getComprasFinal(double compratotal){
         return compratotal;
     }
 
