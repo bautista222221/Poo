@@ -30,31 +30,43 @@ public class Cuenta {
             System.out.println("No hay suficiente saldo.");
         }
     }
-    private void calcularIntereses(){
+    private void calcularIntereses(double interes){
         if(!inversionActiva){
             System.out.println("No hay una inversion activa.");
             return;
         }
-        double interesesGenerados=montoInvertido* 1.4;
+        double interesesGenerados=montoInvertido* interes;
         saldo+=interesesGenerados;
         montoInvertido=0;
         inversionActiva=false;
         System.out.println("Se han generado unos interes por un monto de "+interesesGenerados+" pesos.");
     }
     public void retirarIntereses(LocalDate fechaRetiro){
-        if(fechaRetiro.plusDays(365).isAfter(fechaRetiro)){
-            calcularIntereses();
+        if(fechaInversion.plusDays(365).isAfter(fechaRetiro)){
+            calcularIntereses(1.40);
             return;
-        }else{
+        }else if(fechaInversion.plusDays(30).isAfter(fechaRetiro)){
+            calcularIntereses(1.05);
+        }
+        else{
             System.out.println("No han transcurrido los dias necesarios para retirar el interes");
+            calcularIntereses(1);
         }
     }
     public void pagar(double monto){
-        if(monto<=(saldo+limiteDescubierto)){
-            if(monto>saldo){
+        if(monto<=(saldo+limiteDescubierto+montoInvertido)){
+            if(monto>(saldo+montoInvertido)){
                 System.out.println("Este pago se efectuara con el saldo el limite descubierto.");
             }
-            this.saldo-=monto;
+            if(monto>saldo){
+                this.saldo-=monto;
+            }else{
+                if(inversionActiva) {
+                    retirarIntereses(LocalDate.now());
+                    System.out.println("Se han liberado las inversiones para evitar el limite descubierto!");
+                }
+                this.saldo-=monto;
+            }
             System.out.println("Pago realizado.");
         }
         else System.out.println("No hay suficientes fondos para realizar el pago.");
